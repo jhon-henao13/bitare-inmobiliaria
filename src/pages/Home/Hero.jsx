@@ -24,7 +24,8 @@ const Hero = () => {
           transition={{ duration: 1, delay: 0.3, ease: "easeOut" }}
           className="max-w-4xl"
         >
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold !leading-tight mb-4 drop-shadow-lg">
+
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold !leading-snug mb-4 drop-shadow-[0_4px_3px_rgba(0,0,0,0.8)]">
             Inversión inteligente.<br />
             Arquitectura que trasciende
           </h1>
