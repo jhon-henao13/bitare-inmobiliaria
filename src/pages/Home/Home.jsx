@@ -1,10 +1,11 @@
 import Hero from './Hero';
+import AboutSummary from './AboutSummary';
 
 const Home = () => {
   return (
-    <main>
+    <main className="bg-white">
       <Hero />
-      {/* Aquí irán las siguientes secciones del home que vayas construyendo */}
+      <AboutSummary />
     </main>
   );
 };
