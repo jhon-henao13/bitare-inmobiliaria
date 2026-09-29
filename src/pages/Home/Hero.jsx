@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
+import bgHero from '../../assets/background-hero.jpg';
 
 const Hero = () => {
   return (
@@ -7,7 +8,7 @@ const Hero = () => {
       {/* Background Image */}
       <div 
         className="absolute inset-0 w-full h-full bg-cover bg-center"
-        style={{ backgroundImage: "url('/src/assets/background-hero.jpg')" }}
+        style={{ backgroundImage:  `url(${bgHero})` }}
       />
       
       {/* 1. Gradiente vertical superior: Intenso arriba, desvanece a transparente en la mitad */}
