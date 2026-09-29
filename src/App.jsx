@@ -3,6 +3,7 @@ import Navbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
 import WhatsAppButton from './components/layout/WhatsAppButton';
 import Home from './pages/Home/Home';
+import Desarrollos from './pages/Desarrollos/Desarrollos';
 
 function App() {
   return (
@@ -11,7 +12,7 @@ function App() {
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
-          {/* Aquí agregarás las demás rutas después */}
+          <Route path="/desarrollos" element={<Desarrollos />} />
         </Routes>
 
         <Footer />
