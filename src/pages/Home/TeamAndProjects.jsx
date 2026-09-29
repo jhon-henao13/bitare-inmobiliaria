@@ -2,6 +2,10 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { ArrowUpRight } from 'lucide-react';
+import torreMeyaImg from '../../assets/deliveredProjects/torre-meya.png';
+import paramountImg from '../../assets/comercialProjects/paramount-providencia.png';
+import xeloziaImg from '../../assets/comercialProjects/xelozia-cdgranja.png';
+import cassianovaImg from '../../assets/comercialProjects/cassianova-americana.png';
 
 // --- DATOS DE LOS PROYECTOS PROPORCIONADOS ---
 const deliveredProjects = [
@@ -11,11 +15,12 @@ const deliveredProjects = [
     subtitle: 'Aportación de Tierra',
     img: 'https://3dsvent.s3.us-east-1.amazonaws.com/bitare/INICIO/fotos+bitare-12+1-1.png'
   },
+  
   {
     id: 2,
-    title: 'Vivero Las Fuentes',
-    subtitle: 'Aportación de Tierra',
-    img: 'https://3dsvent.s3.us-east-1.amazonaws.com/bitare/INICIO/fotos+bitare-11+1-1.png'
+    title: 'Torre Meya | Ciudad del Sol',
+    subtitle: ' ',
+    img: torreMeyaImg
   },
 
   {
@@ -23,21 +28,35 @@ const deliveredProjects = [
     title: 'Nova | Providencia',
     subtitle: ' ',
     img: 'https://3dsvent.s3.us-east-1.amazonaws.com/bitare/INICIO/fotos+bitare-13+2.png'
-  }
+  },
+
+  {
+    id: 4,
+    title: 'Vivero Las Fuentes',
+    subtitle: 'Aportación de Tierra',
+    img: 'https://3dsvent.s3.us-east-1.amazonaws.com/bitare/INICIO/fotos+bitare-11+1-1.png'
+  },
 ];
 
 const commercialProjects = [
   {
-    id: 4,
+    id: 5,
     title: 'Paramount | Providencia',
     subtitle: ' ',
-    img: 'https://3dsvent.s3.us-east-1.amazonaws.com/bitare/DESARROLLOS/image+18762.png'
+    img: paramountImg
   },
   {
-    id: 5,
+    id: 6,
     title: 'Xelozia | Cd Granja',
     subtitle: ' ',
-    img: 'https://3dsvent.s3.us-east-1.amazonaws.com/bitare/DESARROLLOS/image+18763.png'
+    img: xeloziaImg
+  },
+
+  {
+    id: 7,
+    title: 'Cassianova | Americana',
+    subtitle: ' ',
+    img: cassianovaImg
   },
   
 ];
@@ -101,7 +120,7 @@ const ProjectCarouselCard = ({ categoryTitle, projects, intervalDelay }) => {
               transition={{ duration: 0.6 }}
             >
               <h3 className="text-white text-xl md:text-2xl font-bold drop-shadow-md">{projects[index].title}</h3>
-              <p className="text-gray-300 text-xs md:text-sm mt-1">{projects[index].subtitle}</p>
+              <p className="text-gray-300 text-base md:text-lg mt-1">{projects[index].subtitle}</p>
             </motion.div>
           </AnimatePresence>
         </div>
