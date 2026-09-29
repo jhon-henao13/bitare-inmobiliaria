@@ -61,10 +61,10 @@ const AboutSummary = () => {
             className="relative mb-20 pt-4"
           >
             {/* SVG responsive para dibujar exactamente el trazo rojo */}
-            <div className="absolute inset-0 pointer-events-none hidden sm:block">
+            <div className="absolute inset-0 pointer-events-none hidden sm:block overflow-visible">
               <svg 
-                className="w-full h-full" 
-                viewBox="0 0 600 110" 
+                className="w-full h-[150%] -top-12 absolute left-0 overflow-visible" 
+                viewBox="0 0 600 150" 
                 fill="none" 
                 preserveAspectRatio="none"
               >
@@ -72,12 +72,12 @@ const AboutSummary = () => {
                   Estructura del trazo:
                   - Borde izquierdo y base de Stat 1
                   - Pico / Techo elevado en Stat 2
-                  - Base, borde derecho ascendente y línea continua hacia la derecha en Stat 3
+                  - Base, borde derecho ascendente y línea continua hacia arriba saliéndose del contenedor en Stat 3
                 */}
                 <path 
-                  d="M 2 30 V 105 H 190 V 35 L 295 8 L 400 35 V 105 H 565 V 5 H 600" 
+                  d="M 2 45 V 135 H 170 V 55 L 285 22 L 390 55 V 135 H 570 V -140 H 660" 
                   stroke="#d12a2a" 
-                  strokeWidth="2.5" 
+                  strokeWidth="2" 
                   strokeLinecap="square"
                   strokeLinejoin="miter"
                 />
@@ -85,28 +85,28 @@ const AboutSummary = () => {
             </div>
 
             {/* Cuadrícula de Estadísticas */}
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-2 px-3 py-4 relative z-10 sm:border-0 border-l-2 border-brand-red pl-4 sm:pl-3">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-2 px-2 py-4 relative z-10 sm:border-0 border-l-2 border-brand-red pl-3 sm:pl-1">
               
               {/* Stat 1 */}
-              <div className="flex flex-col justify-end sm:pl-2 pb-2">
-                <span className="text-3xl sm:text-4xl font-extrabold text-black tracking-tight">10+</span>
-                <span className="text-xs text-gray-500 font-medium leading-tight mt-1">
+              <div className="flex flex-col justify-end sm:pl-2 pb-2 max-w-2xl">
+                <span className="text-3xl sm:text-4xl font-semibold text-black tracking-tight">10+</span>
+                <span className="text-base text-gray-500 font-medium leading-tight mt-1">
                   Desarrollos<br />Propios
                 </span>
               </div>
 
               {/* Stat 2 */}
-              <div className="flex flex-col justify-end sm:px-4 pb-2">
-                <span className="text-3xl sm:text-4xl font-extrabold text-black tracking-tight">$8,000 +</span>
-                <span className="text-xs text-gray-500 font-medium leading-tight mt-1">
+              <div className="flex flex-col justify-start sm:px-2 pb-2">
+                <span className="text-3xl sm:text-4xl font-semibold text-black tracking-tight">$8,000 +</span>
+                <span className="text-base text-gray-500 font-medium leading-tight mt-1">
                   MDP<br />comercializados
                 </span>
               </div>
 
               {/* Stat 3 */}
               <div className="flex flex-col justify-end sm:pl-4 pb-2">
-                <span className="text-3xl sm:text-4xl font-extrabold text-black tracking-tight">1,500+</span>
-                <span className="text-xs text-gray-500 font-medium leading-tight mt-1">
+                <span className="text-3xl sm:text-4xl font-semibold text-black tracking-tight">1,500+</span>
+                <span className="text-base text-gray-500 font-medium leading-tight mt-1">
                   Unidades<br />comercializadas
                 </span>
               </div>
