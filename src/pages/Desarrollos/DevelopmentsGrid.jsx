@@ -1,5 +1,8 @@
 import { motion } from 'framer-motion';
 import { ArrowUpRight, Sparkles } from 'lucide-react';
+import paramountImg from '../../assets/comercialProjects/paramount-providencia.png';
+import xeloziaImg from '../../assets/comercialProjects/xelozia-cdgranja.png';
+import cassianovaImg from '../../assets/comercialProjects/cassianova-americana.png';
 
 // Datos de los desarrollos basados en el diseño de referencia
 const projectsData = [
@@ -11,7 +14,7 @@ const projectsData = [
     units: '62 unidades',
     date: 'Dic 2028',
     size: 'De 49m² a 135m²',
-    image: 'https://3dsvent.s3.us-east-1.amazonaws.com/bitare/DESARROLLOS/image+18762.png'
+    image: paramountImg
   },
   {
     id: 2,
@@ -21,7 +24,7 @@ const projectsData = [
     units: '114 unidades',
     date: 'Dic 2027',
     size: 'De 70m² a 83m²',
-    image: 'https://3dsvent.s3.us-east-1.amazonaws.com/bitare/DESARROLLOS/image+18763.png'
+    image: xeloziaImg
   },
   {
     id: 3,
@@ -31,7 +34,7 @@ const projectsData = [
     units: '102 unidades',
     date: 'Terminado',
     size: 'De 57m² a 92m²',
-    image: 'https://3dsvent.s3.us-east-1.amazonaws.com/bitare/INICIO/fotos+bitare-12+1-1.png'
+    image: cassianovaImg
   }
 ];
 
@@ -76,18 +79,15 @@ const DevelopmentsGrid = () => {
               className="group bg-[#161616] border border-white/10 hover:border-brand-red/50 transition-all duration-500 flex flex-col justify-between overflow-hidden cursor-pointer"
             >
               {/* Contenedor de Imagen */}
-              <div className="relative h-72 md:h-80 lg:h-96 overflow-hidden bg-[#1f1f1f]">
+              <div className="relative w-full overflow-hidden bg-transparent">
                 <img
                   src={project.image}
                   alt={project.title}
-                  className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                  className="w-full h-auto block transition-transform duration-700 ease-out group-hover:scale-105"
                 />
 
-                {/* Sombra suave para integración */}
-                <div className="absolute inset-0 bg-gradient-to-t from-[#161616]/80 via-transparent to-transparent opacity-60" />
-
                 {/* Badge de Estado en la esquina inferior izquierda de la imagen */}
-                <div className="absolute bottom-0 left-0">
+                <div className="absolute bottom-0 left-0 z-10">
                   <span className="bg-brand-red text-white text-base font-black uppercase tracking-widest px-6 py-2 inline-block shadow-lg">
                     {project.badge}
                   </span>
