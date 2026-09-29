@@ -1,43 +1,47 @@
 import { motion } from 'framer-motion';
+import torreMeyaImg from '../../assets/deliveredProjects/torre-meya.png';
+import viewpointImg from '../../assets/deliveredProjects/viewpoint.png';
+import id3Img from '../../assets/deliveredProjects/id3.png';
+import id5Img from '../../assets/deliveredProjects/id5.png';
 
 // Lista de proyectos entregados y aportaciones según la imagen de referencia
 const deliveredProjects = [
   {
     id: 1,
-    title: 'Torre Corporativa Vallarta',
+    title: ' ',
     category: 'Proyecto Entregado',
-    image: 'https://3dsvent.s3.us-east-1.amazonaws.com/bitare/DESARROLLOS/image+18762.png',
+    image: torreMeyaImg,
   },
   {
     id: 2,
-    title: 'Residencial Providencia Highs',
+    title: ' ',
     category: 'Aportación de Tierra',
-    image: 'https://3dsvent.s3.us-east-1.amazonaws.com/bitare/INICIO/fotos+bitare-12+1-1.png',
+    image: viewpointImg,
   },
   {
     id: 3,
-    title: 'Lomas Loft & Suites',
+    title: ' ',
     category: 'Proyecto Entregado',
-    image: 'https://3dsvent.s3.us-east-1.amazonaws.com/bitare/DESARROLLOS/image+18763.png',
+    image: id3Img,
   },
   {
     id: 4,
-    title: 'Punto Minerva',
+    title: ' ',
     category: 'Aportación de Tierra',
-    image: 'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?q=80&w=800&auto=format&fit=crop',
+    image: 'https://3dsvent.s3.us-east-1.amazonaws.com/bitare/INICIO/fotos+bitare-11+1-1.png',
   },
   {
     id: 5,
-    title: 'Habitat Country Club',
+    title: ' ',
     category: 'Aportación de Tierra',
-    image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=800&auto=format&fit=crop',
+    image: id5Img,
   },
 ];
 
 const DeliveredProjects = () => {
   return (
     <section 
-      className="relative text-white py-28 px-4 md:px-12 lg:px-20 overflow-hidden font-sans"
+      className="relative text-white pt-10 pb-24 px-4 md:px-12 lg:px-20 overflow-hidden font-sans"
       style={{ backgroundColor: '#2a2b2d' }}
     >
       {/* Elementos geométricos / Cubos texturizados de fondo con sombras y brillos claros (#1b1c1e) */}
@@ -89,15 +93,16 @@ const DeliveredProjects = () => {
               className="group relative bg-[#1b1c1e] border border-white/10 hover:border-brand-red/50 transition-all duration-500 overflow-hidden shadow-2xl rounded-xs"
             >
               {/* Contenedor de la Imagen */}
-              <div className="relative h-80 sm:h-96 md:h-[430px] w-full overflow-hidden bg-black/40">
+              {/* Contenedor de la Imagen Adaptativo (Tamaño Original) */}
+              <div className="relative w-full overflow-hidden bg-[#161616]">
                 <img 
                   src={project.image} 
                   alt={project.title} 
-                  className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                  className="w-full h-auto block transition-transform duration-700 ease-out group-hover:scale-105"
                 />
 
                 {/* Sombra de degradado para legibilidad */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-70 group-hover:opacity-90 transition-opacity duration-300" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-70 group-hover:opacity-90 transition-opacity duration-300 pointer-events-none" />
 
                 {/* Título de la propiedad visible al interactuar */}
                 <div className="absolute bottom-4 left-4 right-20 z-10">
@@ -115,6 +120,8 @@ const DeliveredProjects = () => {
                   </div>
                 )}
               </div>
+
+
             </motion.div>
           ))}
         </div>

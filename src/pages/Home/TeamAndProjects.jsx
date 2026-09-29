@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { ArrowUpRight } from 'lucide-react';
+import viewpointImg from '../../assets/deliveredProjects/viewpoint.png';
 import torreMeyaImg from '../../assets/deliveredProjects/torre-meya.png';
 import paramountImg from '../../assets/comercialProjects/paramount-providencia.png';
 import xeloziaImg from '../../assets/comercialProjects/xelozia-cdgranja.png';
@@ -13,7 +14,7 @@ const deliveredProjects = [
     id: 1,
     title: 'View Point | Ladrón de G.',
     subtitle: 'Aportación de Tierra',
-    img: 'https://3dsvent.s3.us-east-1.amazonaws.com/bitare/INICIO/fotos+bitare-12+1-1.png'
+    img: viewpointImg
   },
   
   {
