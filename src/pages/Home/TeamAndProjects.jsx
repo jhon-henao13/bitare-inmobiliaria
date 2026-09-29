@@ -111,15 +111,15 @@ const ProjectCarouselCard = ({ categoryTitle, projects, intervalDelay }) => {
 
 const TeamAndProjects = () => {
   // Estado para el carrusel automático de equipo
-  const [teamIndex, setTeamIndex] = useState(0);
+//   const [teamIndex, setTeamIndex] = useState(0);
 
-  // Carrusel automático infinito de derecha a izquierda
-  useEffect(() => {
-    const teamTimer = setInterval(() => {
-      setTeamIndex((prev) => (prev + 1) % teamMembers.length);
-    }, 3000); // Velocidad de rotación (3 segundos)
-    return () => clearInterval(teamTimer);
-  }, []);
+//   // Carrusel automático infinito de derecha a izquierda
+//   useEffect(() => {
+//     const teamTimer = setInterval(() => {
+//       setTeamIndex((prev) => (prev + 1) % teamMembers.length);
+//     }, 3000); // Velocidad de rotación (3 segundos)
+//     return () => clearInterval(teamTimer);
+//   }, []);
 
   return (
     <section 
@@ -154,51 +154,45 @@ const TeamAndProjects = () => {
           </div>
 
           {/* Carrusel del Equipo */}
-          <div className="relative w-full overflow-hidden py-6">
-            <motion.div 
-              className="flex gap-6 items-center"
-              animate={{ x: `calc(-${teamIndex * (300 + 24)}px)` }} // Desplazamiento exacto por ancho de tarjeta + gap
-              transition={{ type: "spring", stiffness: 80, damping: 20 }}
-            >
-              {/* Duplicamos el arreglo para asegurar el loop visual continuo sin espacios vacíos */}
-              {[...teamMembers, ...teamMembers].map((member, idx) => {
-                const isEven = idx % 2 === 0;
-                return (
-                  <div 
-                    key={`${member.id}-${idx}`} 
-                    className={`flex-shrink-0 w-[280px] md:w-[300px] transition-transform duration-500 ${
-                      isEven ? 'translate-y-0' : 'translate-y-8 md:translate-y-12'
-                    }`}
+          {/* Grilla estática del Equipo */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 py-6 items-center">
+            {teamMembers.map((member, idx) => {
+              const isEven = idx % 2 === 0;
+              return (
+                <div 
+                  key={member.id} 
+                  className={`w-full transition-transform duration-500 ${
+                    isEven ? 'translate-y-0' : 'md:translate-y-8 lg:translate-y-12'
+                  }`}
+                >
+                  <Link 
+                    to="/desarrollos" 
+                    className="relative group overflow-hidden block w-full h-[340px] cursor-pointer shadow-md border border-[#6e6d6e]/60"
                   >
-                    <Link 
-                      to="/desarrollos" 
-                      className="relative group overflow-hidden block w-full h-[340px] cursor-pointer shadow-md border border-[#6e6d6e]/60"
-                    >
-                      {/* Imagen del miembro (Gris por defecto, color en hover) */}
-                      <img 
-                        src={member.img} 
-                        alt={member.name} 
-                        className="w-full h-full object-cover grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700" 
-                      />
-                      
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-50 group-hover:opacity-0 transition-opacity" />
+                    {/* Imagen del miembro (Gris por defecto, color en hover) */}
+                    <img 
+                      src={member.img} 
+                      alt={member.name} 
+                      className="w-full h-full object-cover grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700" 
+                    />
+                    
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-50 group-hover:opacity-0 transition-opacity" />
 
-                      {/* Minicard estilo premium animada (Aparece inferior izquierda) */}
-                      <div className="absolute bottom-4 left-4 bg-brand-black/95 p-3 flex items-center justify-between min-w-[180px] opacity-0 group-hover:opacity-100 transform translate-y-6 group-hover:translate-y-0 transition-all duration-500 shadow-2xl border-l-2 border-brand-red">
-                        <div>
-                          <h4 className="text-white font-bold text-sm tracking-wide">{member.name}</h4>
-                          <p className="text-gray-400 text-xs mt-0.5">{member.role}</p>
-                        </div>
-                        <ArrowUpRight className="text-brand-red ml-3" size={18} />
+                    {/* Minicard estilo premium animada (Aparece inferior izquierda) */}
+                    <div className="absolute bottom-4 left-4 bg-brand-black/95 p-3 flex items-center justify-between min-w-[180px] opacity-0 group-hover:opacity-100 transform translate-y-6 group-hover:translate-y-0 transition-all duration-500 shadow-2xl border-l-2 border-brand-red">
+                      <div>
+                        <h4 className="text-white font-bold text-sm tracking-wide">{member.name}</h4>
+                        <p className="text-gray-400 text-xs mt-0.5">{member.role}</p>
                       </div>
-                    </Link>
+                      <ArrowUpRight className="text-brand-red ml-3" size={18} />
+                    </div>
+                  </Link>
 
-                    {/* Pequeña línea roja corta y centrada debajo de cada card de equipo */}
-                    <div className="w-14 mx-auto h-[3px] bg-brand-red mt-4 rounded-full shadow-[0_0_8px_rgba(239,68,68,0.4)] opacity-90" />
-                  </div>
-                );
-              })}
-            </motion.div>
+                  {/* Pequeña línea roja corta y centrada debajo de cada card de equipo */}
+                  <div className="w-14 mx-auto h-[3px] bg-brand-red mt-4 rounded-full shadow-[0_0_8px_rgba(239,68,68,0.4)] opacity-90" />
+                </div>
+              );
+            })}
           </div>
         </motion.div>
 
