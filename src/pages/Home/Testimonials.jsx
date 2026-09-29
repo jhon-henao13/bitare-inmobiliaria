@@ -31,7 +31,7 @@ const testimonialsData = [
     rating: 5,
     quote: 'El trato personalizado de la directiva y la atención al detalle en los acabados marcan una diferencia abismal en comparación con otras desarrolladoras del sector.',
     author: 'Carlos & Elena Mendoza',
-    role: 'Inversionistas - Xeloxia Cd. Granja',
+    role: 'Inversionistas - Xelozia Cd. Granja',
     avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=200&auto=format&fit=crop'
   }
 ];

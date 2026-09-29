@@ -15,7 +15,7 @@ const projectsData = [
   },
   {
     id: 2,
-    title: 'Xeloxia Ciudad Granja',
+    title: 'Xelozia Ciudad Granja',
     price: '$4.8 MDP',
     badge: 'PREVENTA',
     units: '114 unidades',

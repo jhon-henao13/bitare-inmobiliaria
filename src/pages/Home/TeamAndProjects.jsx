@@ -16,28 +16,30 @@ const deliveredProjects = [
     title: 'Vivero Las Fuentes',
     subtitle: 'Aportación de Tierra',
     img: 'https://3dsvent.s3.us-east-1.amazonaws.com/bitare/INICIO/fotos+bitare-11+1-1.png'
+  },
+
+  {
+    id: 3,
+    title: 'Nova | Providencia',
+    subtitle: ' ',
+    img: 'https://3dsvent.s3.us-east-1.amazonaws.com/bitare/INICIO/fotos+bitare-13+2.png'
   }
 ];
 
 const commercialProjects = [
   {
-    id: 3,
+    id: 4,
     title: 'Paramount | Providencia',
     subtitle: ' ',
     img: 'https://3dsvent.s3.us-east-1.amazonaws.com/bitare/DESARROLLOS/image+18762.png'
   },
   {
-    id: 4,
-    title: 'Xeloxia | Cd Granja',
+    id: 5,
+    title: 'Xelozia | Cd Granja',
     subtitle: ' ',
     img: 'https://3dsvent.s3.us-east-1.amazonaws.com/bitare/DESARROLLOS/image+18763.png'
   },
-  {
-    id: 5,
-    title: 'Nova | Providencia',
-    subtitle: ' ',
-    img: 'https://3dsvent.s3.us-east-1.amazonaws.com/bitare/INICIO/fotos+bitare-13+2.png'
-  }
+  
 ];
 
 // --- DATOS DEL EQUIPO (Ejemplo con placeholders profesionales) ---
