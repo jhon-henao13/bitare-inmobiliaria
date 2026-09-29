@@ -24,7 +24,7 @@ const Navbar = () => {
       {/* Logo alineado a la izquierda */}
       <div className="flex-shrink-0 z-50">
         <Link to="/" onClick={() => setIsOpen(false)}>
-          <img src={logoImg} alt="Bitáre Real Estate" className="h-12 md:h-16 object-contain mix-blend-screen" />
+          <img src={logoImg} alt="Bitáre Real Estate" className="h-14 md:h-16 object-contain mix-blend-screen" />
         </Link>
       </div>
 
@@ -48,22 +48,23 @@ const Navbar = () => {
         className="md:hidden relative z-50 w-10 h-10 flex flex-col justify-center items-center focus:outline-none group"
       >
         <span 
-          className={`w-7 h-[2px] bg-white transition-all duration-300 ease-in-out transform ${
+          className={`w-7 h-[4px] bg-[#d12a2a] transition-all duration-300 ease-in-out transform ${
             isOpen ? 'rotate-45 translate-y-[7px]' : '-translate-y-2'
           }`}
         />
         <span 
-          className={`w-7 h-[2px] bg-white transition-all duration-300 ease-in-out ${
+          className={`w-7 h-[4px] bg-[#d12a2a] transition-all duration-300 ease-in-out ${
             isOpen ? 'opacity-0 translate-x-3' : 'opacity-100'
           }`}
         />
         <span 
-          className={`w-7 h-[2px] bg-white transition-all duration-300 ease-in-out transform ${
+          className={`w-7 h-[4px] bg-[#d12a2a] transition-all duration-300 ease-in-out transform ${
             isOpen ? '-rotate-45 -translate-y-[7px]' : 'translate-y-2'
           }`}
         />
       </button>
 
+      {/* Menú Móvil Desplegable Premium (Fullscreen / Drawer con Framer Motion) */}
       {/* Menú Móvil Desplegable Premium (Fullscreen / Drawer con Framer Motion) */}
       <AnimatePresence>
         {isOpen && (
@@ -72,9 +73,9 @@ const Navbar = () => {
             animate={{ opacity: 1, clipPath: 'circle(150% at 100% 0%)' }}
             exit={{ opacity: 0, clipPath: 'circle(0% at 100% 0%)' }}
             transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-            className="fixed inset-0 bg-[#1b1c1e]/95 backdrop-blur-xl z-40 flex flex-col justify-center items-center px-8 md:hidden"
+            className="fixed inset-0 w-full h-screen bg-[#1b1c1e]/98 backdrop-blur-xl z-40 flex flex-col justify-center items-center px-8 md:hidden overflow-y-auto"
           >
-            <div className="flex flex-col items-center space-y-8 text-center w-full">
+            <div className="flex flex-col items-center space-y-8 text-center w-full py-20">
               {navLinks.map((link, index) => (
                 <motion.div
                   key={link.name}
