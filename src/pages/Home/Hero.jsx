@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
-import bgHero from '../../assets/background-hero.jpg';
+import bgHero from '../../assets/background-hero.png';
 
 const Hero = () => {
   return (

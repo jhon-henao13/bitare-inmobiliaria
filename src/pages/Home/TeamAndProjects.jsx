@@ -48,7 +48,6 @@ const teamMembers = [
   { id: 2, name: 'Roberto Alarcón', role: 'Director Comercial', img: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=600&auto=format&fit=crop' },
   { id: 3, name: 'David Silva', role: 'Director de Obra', img: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=600&auto=format&fit=crop' },
   { id: 4, name: 'Fernando Ruiz', role: 'Finanzas', img: 'https://images.unsplash.com/photo-1556157382-97eda2d62296?q=80&w=600&auto=format&fit=crop' },
-  { id: 5, name: 'Javier Ceballos', role: 'Operaciones', img: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=600&auto=format&fit=crop' },
 ];
 
 /* COMPONENTE INTERNO: Tarjeta de Proyecto Animada */
@@ -155,9 +154,9 @@ const TeamAndProjects = () => {
             </p>
           </div>
 
-          {/* Carrusel del Equipo */}
+
           {/* Grilla estática del Equipo */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 py-6 items-center">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 py-6 items-center justify-items-center max-w-6xl mx-auto">
             {teamMembers.map((member, idx) => {
               const isEven = idx % 2 === 0;
               return (
