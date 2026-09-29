@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/layout/Navbar';
+import Footer from './components/layout/Footer';
 import WhatsAppButton from './components/layout/WhatsAppButton';
 import Home from './pages/Home/Home';
 
@@ -12,9 +13,11 @@ function App() {
           <Route path="/" element={<Home />} />
           {/* Aquí agregarás las demás rutas después */}
         </Routes>
+
+        <Footer />
         <WhatsAppButton />
         
-        {/* Línea roja inferior fija que se ve en image_11a8b9.jpg */}
+        {/* Línea roja inferior fija */}
         <div className="fixed bottom-0 left-0 w-full h-4 bg-brand-red z-50"></div>
       </div>
     </Router>
