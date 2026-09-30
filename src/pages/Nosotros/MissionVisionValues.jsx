@@ -136,9 +136,7 @@ const MissionVisionValues = () => {
                 </span>
               </div>
 
-              <h3 className="text-2xl sm:text-3xl font-extrabold text-white mb-6 tracking-tight">
-                Misión
-              </h3>
+              
 
               <p className="text-gray-300 text-sm sm:text-base !leading-relaxed font-normal">
                 Desarrollar y comercializar proyectos inmobiliarios de alto valor que generen bienestar, rentabilidad y plusvalía para nuestros clientes, mediante un servicio profesional, transparente y enfocado en la excelencia, acompañándolos en cada etapa de su inversión patrimonial.
@@ -172,9 +170,7 @@ const MissionVisionValues = () => {
                 </span>
               </div>
 
-              <h3 className="text-2xl sm:text-3xl font-extrabold text-white mb-6 tracking-tight">
-                Visión
-              </h3>
+              
 
               <p className="text-gray-300 text-sm sm:text-base !leading-relaxed font-normal">
                 Convertirnos en una de las desarrolladoras y comercializadoras inmobiliarias más influyentes de México, distinguidas por nuestra capacidad de transformar ideas en proyectos exitosos, generar valor sostenible y construir un legado de confianza, innovación y excelencia.
