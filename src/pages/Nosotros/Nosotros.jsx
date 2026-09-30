@@ -1,6 +1,7 @@
 import HeroNosotros from './HeroNosotros';
 import TeamLeadership from './TeamLeadership';
 import MissionVisionValues from './MissionVisionValues';
+import StrategicAlliances from './StrategicAlliances';
 
 const Nosotros = () => {
   return (
@@ -8,6 +9,7 @@ const Nosotros = () => {
       <HeroNosotros />
       <TeamLeadership />
       <MissionVisionValues />
+      <StrategicAlliances />
     </main>
   );
 };
