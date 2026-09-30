@@ -4,6 +4,7 @@ import Footer from './components/layout/Footer';
 import WhatsAppButton from './components/layout/WhatsAppButton';
 import Home from './pages/Home/Home';
 import Desarrollos from './pages/Desarrollos/Desarrollos';
+import Nosotros from './pages/Nosotros/Nosotros';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/desarrollos" element={<Desarrollos />} />
+          <Route path="/nosotros" element={<Nosotros />} />
         </Routes>
 
         <Footer />
