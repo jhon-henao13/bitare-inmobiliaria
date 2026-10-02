@@ -82,7 +82,7 @@ const DevelopmentsGrid = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: index * 0.15 }}
-              className="group bg-[#161616] border border-white/10 hover:border-brand-red/50 transition-all duration-500 flex flex-col justify-between overflow-hidden cursor-pointer shadow-xl"
+              className="group bg-[#161616] border border-white/10 hover:border-brand-red/50 transition-all duration-500 flex flex-col justify-between overflow-hidden cursor-pointer shadow-xl max-w-[92%] lg:max-w-[86%] mx-auto w-full"
             >
               {/* Contenedor de Imagen con Efecto Hover Premium (Crossfade) */}
               <div className="relative w-full overflow-hidden bg-[#161616]">
@@ -138,7 +138,7 @@ const DevelopmentsGrid = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.45 }}
-            className="bg-transparent border border-dashed border-white/15 hover:border-brand-red/40 transition-all duration-500 min-h-[420px] flex flex-col items-center justify-center p-8 text-center relative group overflow-hidden"
+            className="bg-transparent border border-dashed border-white/15 hover:border-brand-red/40 transition-all duration-500 min-h-[380px] flex flex-col items-center justify-center p-8 text-center relative group overflow-hidden max-w-[92%] lg:max-w-[86%] mx-auto w-full"
           >
             {/* Resplandor decorativo de fondo */}
             <div className="absolute w-64 h-64 bg-brand-red/5 rounded-full blur-3xl group-hover:bg-brand-red/10 transition-all duration-700 pointer-events-none" />
