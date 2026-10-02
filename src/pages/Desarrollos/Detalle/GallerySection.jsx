@@ -1,19 +1,31 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
+import { Bath, LayoutGrid, X, ChevronLeft, ChevronRight } from 'lucide-react';
 
 const GallerySection = ({ data }) => {
   const galeria = data.galeria || [];
-  const [selectedImg, setSelectedImg] = useState(galeria[0]);
+  const [selectedIndex, setSelectedIndex] = useState(0);
+  const [lightboxOpen, setLightboxOpen] = useState(false);
 
-  // Sincronizar si la galería se carga asíncronamente
+  useEffect(() => { setSelectedIndex(0); }, [data]);
+
+  const selectedImg = galeria[selectedIndex];
+
+  // Navegación con teclado en el lightbox
+  const handleKey = useCallback((e) => {
+    if (!lightboxOpen) return;
+    if (e.key === 'Escape') setLightboxOpen(false);
+    if (e.key === 'ArrowRight') setSelectedIndex(i => (i + 1) % galeria.length);
+    if (e.key === 'ArrowLeft') setSelectedIndex(i => (i - 1 + galeria.length) % galeria.length);
+  }, [lightboxOpen, galeria.length]);
+
   useEffect(() => {
-    if (galeria.length > 0) {
-      setSelectedImg(galeria[0]);
-    }
-  }, [data]);
+    window.addEventListener('keydown', handleKey);
+    return () => window.removeEventListener('keydown', handleKey);
+  }, [handleKey]);
 
   return (
     <div className="space-y-6">
-      {/* Badge y Encabezado */}
+      {/* Encabezado */}
       <div>
         <span className="bg-brand-red text-white text-xs font-bold px-3 py-1 rounded-sm tracking-widest uppercase inline-block mb-3">
           {data.estado}
@@ -27,18 +39,22 @@ const GallerySection = ({ data }) => {
         </p>
       </div>
 
-      {/* Imagen Principal */}
-      <div className="w-full h-[380px] sm:h-[480px] rounded-2xl overflow-hidden border border-white/10 relative shadow-2xl bg-black/40 flex items-center justify-center">
+      {/* Imagen Principal — natural, cap 620px, clic para abrir lightbox */}
+      <button
+        type="button"
+        onClick={() => selectedImg && setLightboxOpen(true)}
+        className="w-full max-h-[620px] rounded-2xl overflow-hidden border border-white/10 relative shadow-2xl bg-black/40 flex items-center justify-center cursor-zoom-in group"
+      >
         {selectedImg ? (
-          <img 
-            src={selectedImg.url} 
-            alt={selectedImg.alt || data.nombre} 
-            className="w-full h-full object-cover transition-all duration-500" 
+          <img
+            src={selectedImg.url}
+            alt={selectedImg.alt || data.nombre}
+            className="w-full h-auto max-h-[620px] object-contain transition-transform duration-500 group-hover:scale-[1.01]"
           />
         ) : (
-          <span className="text-gray-500 text-sm">Sin imágenes en la galería</span>
+          <span className="text-gray-500 text-sm py-24">Sin imágenes en la galería</span>
         )}
-      </div>
+      </button>
 
       {/* Miniaturas */}
       {galeria.length > 0 && (
@@ -46,33 +62,76 @@ const GallerySection = ({ data }) => {
           {galeria.map((img, idx) => (
             <button
               key={img._key || idx}
-              onClick={() => setSelectedImg(img)}
+              onClick={() => setSelectedIndex(idx)}
               className={`h-20 rounded-lg overflow-hidden border transition-all ${
-                selectedImg === img ? 'border-brand-red ring-2 ring-brand-red/30' : 'border-white/10 opacity-60 hover:opacity-100'
+                selectedIndex === idx ? 'border-brand-red ring-2 ring-brand-red/30' : 'border-white/10 opacity-60 hover:opacity-100'
               }`}
             >
-              <img 
-                src={img.url} 
-                alt={img.alt || `Vista ${idx + 1}`} 
-                className="w-full h-full object-cover" 
+              <img
+                src={img.url}
+                alt={img.alt || `Vista ${idx + 1}`}
+                className="w-full h-full object-cover"
               />
             </button>
           ))}
         </div>
       )}
 
-      {/* Barra de Especificaciones Rápidas */}
-      <div className="flex items-center gap-6 bg-[#1b1c1e] border border-white/10 p-4 rounded-xl text-xs sm:text-sm text-gray-300">
+      {/* Barra de especificaciones rápidas */}
+      <div className="flex flex-wrap items-center gap-6 bg-[#1b1c1e] border border-white/10 p-4 rounded-xl text-xs sm:text-sm text-gray-300">
         <div className="flex items-center gap-2">
-          <svg className="w-5 h-5 text-brand-red" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"/></svg>
-          <span>{data.residencias ? `${data.residencias} Residencias` : 'Residencias exclusivas'}</span>
+          <Bath className="w-5 h-5 text-brand-red" />
+          <span>{data.banosPorHabitacion || 'Baños por definir'}</span>
         </div>
         <div className="h-4 w-[1px] bg-white/20" />
         <div className="flex items-center gap-2">
-          <svg className="w-5 h-5 text-brand-red" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
-          <span>{data.fechaApertura ? `Apertura: ${data.fechaApertura}` : 'Entrega programada'}</span>
+          <LayoutGrid className="w-5 h-5 text-brand-red" />
+          <span>{data.tipologias || 'Tipologías por definir'}</span>
         </div>
       </div>
+
+      {/* Lightbox */}
+      {lightboxOpen && selectedImg && (
+        <div
+          className="fixed inset-0 z-[200] bg-black/95 backdrop-blur-md flex items-center justify-center"
+          onClick={() => setLightboxOpen(false)}
+        >
+          <button
+            onClick={() => setLightboxOpen(false)}
+            className="absolute top-6 right-6 text-white/70 hover:text-white transition-colors z-10"
+            aria-label="Cerrar"
+          >
+            <X size={32} />
+          </button>
+
+          <button
+            onClick={(e) => { e.stopPropagation(); setSelectedIndex(i => (i - 1 + galeria.length) % galeria.length); }}
+            className="absolute left-6 text-white/70 hover:text-white transition-colors z-10"
+            aria-label="Anterior"
+          >
+            <ChevronLeft size={48} />
+          </button>
+
+          <img
+            src={selectedImg.url}
+            alt={selectedImg.alt || data.nombre}
+            className="max-w-[92vw] max-h-[88vh] object-contain select-none"
+            onClick={(e) => e.stopPropagation()}
+          />
+
+          <button
+            onClick={(e) => { e.stopPropagation(); setSelectedIndex(i => (i + 1) % galeria.length); }}
+            className="absolute right-6 text-white/70 hover:text-white transition-colors z-10"
+            aria-label="Siguiente"
+          >
+            <ChevronRight size={48} />
+          </button>
+
+          <span className="absolute bottom-6 text-white/60 text-sm">
+            {selectedIndex + 1} / {galeria.length}
+          </span>
+        </div>
+      )}
     </div>
   );
 };
