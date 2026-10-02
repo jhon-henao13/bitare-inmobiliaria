@@ -1,6 +1,5 @@
-import { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { client } from "../../../sanityClient";
+import { useDesarrollo } from '../../../hooks/useDesarrollos';
 import GallerySection from './GallerySection';
 import SidebarCard from './SidebarCard';
 import ModelsSection from './ModelsSection';
@@ -8,25 +7,8 @@ import NearbySection from './NearbySection';
 
 const DesarrolloDetalle = () => {
   const { slug } = useParams();
-  const [data, setData] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const { desarrollo, loading, error } = useDesarrollo(slug);
 
-  useEffect(() => {
-    // Consulta GROQ para buscar el documento por su tipo y el slug actual
-    const query = `*[_type == "desarrollo" && slug.current == $slug][0]`;
-    
-    client.fetch(query, { slug })
-      .then((res) => {
-        setData(res);
-        setLoading(false);
-      })
-      .catch((err) => {
-        console.error("Error al obtener el desarrollo de Sanity:", err);
-        setLoading(false);
-      });
-  }, [slug]);
-
-  // Pantalla de carga mientras responde Sanity
   if (loading) {
     return (
       <main className="bg-brand-black min-h-screen pt-28 pb-20 text-white font-sans flex justify-center items-center">
@@ -35,8 +17,7 @@ const DesarrolloDetalle = () => {
     );
   }
 
-  // Si no se encuentra el desarrollo con ese slug en Sanity
-  if (!data) {
+  if (error || !desarrollo) {
     return (
       <main className="bg-brand-black min-h-screen pt-28 pb-20 text-white font-sans text-center">
         <div className="max-w-7xl mx-auto px-4">
@@ -54,32 +35,27 @@ const DesarrolloDetalle = () => {
     <main className="bg-brand-black min-h-screen pt-28 pb-20 text-white font-sans">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Enlace de regreso */}
         <Link to="/desarrollos" className="inline-flex items-center gap-2 text-gray-400 hover:text-brand-red text-sm transition-colors mb-8">
           ← Volver al portafolio
         </Link>
 
-        {/* Layout en 2 Columnas (Principal + Sticky Sidebar) */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
           
-          {/* Contenido Principal (8 Cols) */}
           <div className="lg:col-span-8 space-y-12">
-            <GallerySection data={data} />
+            <GallerySection data={desarrollo} />
 
-            {/* Resumen */}
-            {data.resumen && (
+            {desarrollo.resumen && (
               <section className="border-t border-white/10 pt-8">
                 <h2 className="text-2xl font-extrabold text-white mb-4">Resumen</h2>
-                <p className="text-gray-300 leading-relaxed text-sm sm:text-base">{data.resumen}</p>
+                <p className="text-gray-300 leading-relaxed text-sm sm:text-base">{desarrollo.resumen}</p>
               </section>
             )}
 
-            {/* Características */}
-            {data.caracteristicas && data.caracteristicas.length > 0 && (
+            {desarrollo.caracteristicas && desarrollo.caracteristicas.length > 0 && (
               <section className="border-t border-white/10 pt-8">
                 <h2 className="text-2xl font-extrabold text-white mb-6">Características</h2>
                 <ul className="grid grid-cols-1 sm:grid-cols-3 gap-3 text-gray-300 text-xs sm:text-sm">
-                  {data.caracteristicas.map((item, idx) => (
+                  {desarrollo.caracteristicas.map((item, idx) => (
                     <li key={idx} className="flex items-center gap-2">
                       <span className="w-1.5 h-1.5 rounded-full bg-brand-red" />
                       <span>{item}</span>
@@ -89,21 +65,19 @@ const DesarrolloDetalle = () => {
               </section>
             )}
 
-            {/* Sobre el desarrollo */}
-            {data.sobreDesarrollo && (
+            {desarrollo.sobreDesarrollo && (
               <section className="border-t border-white/10 pt-8">
                 <h2 className="text-2xl font-extrabold text-white mb-4">Sobre el desarrollo</h2>
-                <p className="text-gray-300 leading-relaxed text-sm sm:text-base">{data.sobreDesarrollo}</p>
+                <p className="text-gray-300 leading-relaxed text-sm sm:text-base">{desarrollo.sobreDesarrollo}</p>
               </section>
             )}
 
-            <ModelsSection modelos={data.modelos} />
-            <NearbySection lugares={data.lugaresCercanos} mapaUrl={data.mapaUrl} />
+            <ModelsSection modelos={desarrollo.modelos} />
+            <NearbySection lugares={desarrollo.lugaresCercanos} mapaUrl={desarrollo.mapaUrl} />
           </div>
 
-          {/* Lateral Flotante / Sticky Sidebar (4 Cols) */}
           <div className="lg:col-span-4">
-            <SidebarCard data={data} />
+            <SidebarCard data={desarrollo} />
           </div>
 
         </div>

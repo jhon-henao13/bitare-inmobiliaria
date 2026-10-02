@@ -3,6 +3,13 @@ const SidebarCard = ({ data }) => {
     ? data.amenidades.join(', ') 
     : 'Amenidades exclusivas por anunciar';
 
+  // Número de WhatsApp configurable (cámbialo por el real de Bitáre)
+  const WHATSAPP_NUMBER = '521234567890';
+
+  const mensajeWhatsApp = encodeURIComponent(
+    `Hola, me interesa obtener información sobre ${data.nombre || 'este desarrollo'}`
+  );
+
   return (
     <div className="sticky top-28 bg-[#1b1c1e] border border-white/10 rounded-2xl p-8 shadow-2xl space-y-6">
       {/* Insignia / Logotipo del desarrollo */}
@@ -44,7 +51,7 @@ const SidebarCard = ({ data }) => {
 
       {/* Botón CTA */}
       <a
-        href={`https://wa.me/521234567890?text=Hola,%20me%20interesa%20obtener%20información%20sobre%20${encodeURIComponent(data.nombre || 'este desarrollo')}`}
+        href={`https://wa.me/${WHATSAPP_NUMBER}?text=${mensajeWhatsApp}`}
         target="_blank"
         rel="noopener noreferrer"
         className="block w-full text-center bg-brand-red hover:bg-red-600 text-white font-bold py-4 rounded-xl transition-all shadow-[0_0_20px_rgba(220,38,38,0.3)] hover:shadow-[0_0_30px_rgba(220,38,38,0.5)] uppercase tracking-wider text-sm"

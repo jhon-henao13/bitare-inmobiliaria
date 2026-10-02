@@ -1,10 +1,7 @@
 import { useState, useEffect } from 'react';
-import { urlFor } from '../../../sanityClient'; // Ajusta la ruta para llegar a src/sanityClient.js
 
 const GallerySection = ({ data }) => {
-  // Validar si hay galería disponible
   const galeria = data.galeria || [];
-  
   const [selectedImg, setSelectedImg] = useState(galeria[0]);
 
   // Sincronizar si la galería se carga asíncronamente
@@ -34,8 +31,8 @@ const GallerySection = ({ data }) => {
       <div className="w-full h-[380px] sm:h-[480px] rounded-2xl overflow-hidden border border-white/10 relative shadow-2xl bg-black/40 flex items-center justify-center">
         {selectedImg ? (
           <img 
-            src={urlFor(selectedImg).url()} 
-            alt={data.nombre} 
+            src={selectedImg.url} 
+            alt={selectedImg.alt || data.nombre} 
             className="w-full h-full object-cover transition-all duration-500" 
           />
         ) : (
@@ -48,15 +45,15 @@ const GallerySection = ({ data }) => {
         <div className="grid grid-cols-5 gap-3">
           {galeria.map((img, idx) => (
             <button
-              key={idx}
+              key={img._key || idx}
               onClick={() => setSelectedImg(img)}
               className={`h-20 rounded-lg overflow-hidden border transition-all ${
                 selectedImg === img ? 'border-brand-red ring-2 ring-brand-red/30' : 'border-white/10 opacity-60 hover:opacity-100'
               }`}
             >
               <img 
-                src={urlFor(img).url()} 
-                alt={`Vista ${idx}`} 
+                src={img.url} 
+                alt={img.alt || `Vista ${idx + 1}`} 
                 className="w-full h-full object-cover" 
               />
             </button>

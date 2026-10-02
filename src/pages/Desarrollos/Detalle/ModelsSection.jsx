@@ -1,8 +1,18 @@
 import { useState, useEffect } from 'react';
-import { urlFor } from '../../../sanityClient';
 
 const ModelsSection = ({ modelos }) => {
-  // Si no hay modelos o la lista está vacía, no mostramos nada (o un mensaje)
+  // Hooks SIEMPRE al inicio, sin condicionales
+  const [activeModel, setActiveModel] = useState(null);
+
+  useEffect(() => {
+    if (modelos && modelos.length > 0) {
+      setActiveModel(modelos[0]);
+    } else {
+      setActiveModel(null);
+    }
+  }, [modelos]);
+
+  // Ahora sí, retornos tempranos después de los hooks
   if (!modelos || modelos.length === 0) {
     return (
       <section className="border-t border-white/10 pt-10">
@@ -11,15 +21,6 @@ const ModelsSection = ({ modelos }) => {
       </section>
     );
   }
-
-  const [activeModel, setActiveModel] = useState(modelos[0]);
-
-  // Actualizar el modelo activo si cambian los props del desarrollo
-  useEffect(() => {
-    if (modelos && modelos.length > 0) {
-      setActiveModel(modelos[0]);
-    }
-  }, [modelos]);
 
   if (!activeModel) return null;
 
@@ -32,10 +33,10 @@ const ModelsSection = ({ modelos }) => {
         <div className="md:col-span-5 space-y-3">
           {modelos.map((mod) => (
             <button
-              key={mod.nombre || mod._key}
+              key={mod._key || mod.nombre}
               onClick={() => setActiveModel(mod)}
               className={`w-full text-left p-4 rounded-xl font-bold transition-all flex items-center justify-between border ${
-                activeModel?.nombre === mod.nombre
+                activeModel?._key === mod._key || activeModel?.nombre === mod.nombre
                   ? 'bg-brand-red text-white border-brand-red shadow-lg'
                   : 'bg-black/40 text-gray-400 border-white/5 hover:border-white/20 hover:text-white'
               }`}
@@ -48,9 +49,9 @@ const ModelsSection = ({ modelos }) => {
 
         {/* Vista Previa del Plano (Derecha) */}
         <div className="md:col-span-7 bg-white rounded-xl p-4 overflow-hidden border border-white/10 shadow-xl">
-          {activeModel.plano ? (
+          {activeModel.planoUrl ? (
             <img
-              src={urlFor(activeModel.plano).url()}
+              src={activeModel.planoUrl}
               alt={`Plano ${activeModel.nombre}`}
               className="w-full h-64 sm:h-80 object-contain hover:scale-105 transition-transform duration-500"
             />
@@ -60,8 +61,8 @@ const ModelsSection = ({ modelos }) => {
             </div>
           )}
           <div className="mt-4 pt-3 border-t border-gray-200 flex justify-between items-center text-gray-800 text-xs font-semibold">
-            <span>Recámaras: {activeModel.recamaras}</span>
-            <span>Baños: {activeModel.banos}</span>
+            <span>Recámaras: {activeModel.recamaras ?? '—'}</span>
+            <span>Baños: {activeModel.banos ?? '—'}</span>
           </div>
         </div>
       </div>
