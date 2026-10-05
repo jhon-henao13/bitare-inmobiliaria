@@ -15,7 +15,7 @@ const SidebarCard = ({ data }) => {
     <>
       <div className="sticky top-28 bg-[#1b1c1e] border border-white/10 rounded-2xl p-8 shadow-2xl space-y-6">
         {/* Logotipo del desarrollo (imagen desde Sanity) */}
-        <div className="w-24 h-24 bg-gradient-to-br from-brand-red/20 to-black/80 rounded-full border border-white/10 mx-auto flex items-center justify-center p-3 shadow-inner overflow-hidden">
+        <div className="w-24 h-24 bg-gradient-to-br from-brand-red/20 to-black/80 rounded-full border border-white/10 mx-auto flex items-center justify-center p-1 shadow-inner overflow-hidden">
           {data.logotipoUrl ? (
             <img
               src={data.logotipoUrl}
