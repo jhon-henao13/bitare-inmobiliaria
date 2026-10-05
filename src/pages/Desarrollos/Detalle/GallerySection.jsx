@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from 'react';
-import { Bath, LayoutGrid, X, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Car, LayoutGrid, X, ChevronLeft, ChevronRight } from 'lucide-react';
 
 const GallerySection = ({ data }) => {
   const galeria = data.galeria || [];
@@ -80,8 +80,8 @@ const GallerySection = ({ data }) => {
       {/* Barra de especificaciones rápidas */}
       <div className="flex flex-wrap items-center gap-6 bg-[#1b1c1e] border border-white/10 p-4 rounded-xl text-xs sm:text-sm text-gray-300">
         <div className="flex items-center gap-2">
-          <Bath className="w-5 h-5 text-brand-red" />
-          <span>{data.banosPorHabitacion || 'Baños por definir'}</span>
+          <Car className="w-5 h-5 text-brand-red" />
+          <span>{data.parking || 'Estacionamiento por definir'}</span>
         </div>
         <div className="h-4 w-[1px] bg-white/20" />
         <div className="flex items-center gap-2">

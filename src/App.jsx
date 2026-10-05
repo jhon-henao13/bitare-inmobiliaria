@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
 import WhatsAppButton from './components/layout/WhatsAppButton';
+import ScrollToTop from './components/layout/ScrollToTop';
 import Home from './pages/Home/Home';
 import Desarrollos from './pages/Desarrollos/Desarrollos';
 import DesarrolloDetalle from './pages/Desarrollos/Detalle/DesarrolloDetalle';
@@ -11,6 +12,7 @@ function App() {
   return (
     <Router>
       <div className="relative min-h-screen bg-brand-black text-white font-sans overflow-hidden">
+        <ScrollToTop />
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />

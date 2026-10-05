@@ -21,7 +21,7 @@ const NearbySection = ({ lugares, mapaUrl }) => {
         )}
 
         {/* Embed / Contenedor del Mapa */}
-        <div className="w-full h-64 rounded-2xl overflow-hidden border border-white/10 shadow-xl bg-[#1b1c1e] flex items-center justify-center">
+        <div className="w-full h-72 rounded-2xl overflow-hidden border border-white/10 shadow-xl bg-[#1b1c1e] flex items-center justify-center">
           {mapaUrl ? (
             <iframe
               title="Ubicación del desarrollo"

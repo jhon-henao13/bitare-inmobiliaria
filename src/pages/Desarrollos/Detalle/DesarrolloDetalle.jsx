@@ -39,48 +39,51 @@ const DesarrolloDetalle = () => {
           ← Volver al portafolio
         </Link>
 
+        {/* ===== BLOQUE SUPERIOR: Galería (8 cols) + Sidebar (4 cols) ===== */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
-          
-          <div className="lg:col-span-8 space-y-12">
+          <div className="lg:col-span-8">
             <GallerySection data={desarrollo} />
-
-            {desarrollo.resumen && (
-              <section className="border-t border-white/10 pt-8">
-                <h2 className="text-2xl font-extrabold text-white mb-4">Resumen</h2>
-                <p className="text-gray-300 leading-relaxed text-sm sm:text-base">{desarrollo.resumen}</p>
-              </section>
-            )}
-
-            {desarrollo.caracteristicas && desarrollo.caracteristicas.length > 0 && (
-              <section className="border-t border-white/10 pt-8">
-                <h2 className="text-2xl font-extrabold text-white mb-6">Características</h2>
-                <ul className="grid grid-cols-1 sm:grid-cols-3 gap-3 text-gray-300 text-xs sm:text-sm">
-                  {desarrollo.caracteristicas.map((item, idx) => (
-                    <li key={idx} className="flex items-center gap-2">
-                      <span className="w-1.5 h-1.5 rounded-full bg-brand-red" />
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </section>
-            )}
-
-            {desarrollo.sobreDesarrollo && (
-              <section className="border-t border-white/10 pt-8">
-                <h2 className="text-2xl font-extrabold text-white mb-4">Sobre el desarrollo</h2>
-                <p className="text-gray-300 leading-relaxed text-sm sm:text-base">{desarrollo.sobreDesarrollo}</p>
-              </section>
-            )}
-
-            <ModelsSection modelos={desarrollo.modelos} />
-            <NearbySection lugares={desarrollo.lugaresCercanos} mapaUrl={desarrollo.mapaUrl} />
           </div>
 
           <div className="lg:col-span-4">
             <SidebarCard data={desarrollo} />
           </div>
-
         </div>
+
+        {/* ===== BLOQUE INFERIOR: ancho completo ===== */}
+        <div className="mt-12 space-y-12">
+          {desarrollo.resumen && (
+            <section className="border-t border-white/10 pt-8">
+              <h2 className="text-2xl font-extrabold text-white mb-4">Resumen</h2>
+              <p className="text-gray-300 leading-relaxed text-sm sm:text-base max-w-4xl">{desarrollo.resumen}</p>
+            </section>
+          )}
+
+          {desarrollo.caracteristicas && desarrollo.caracteristicas.length > 0 && (
+            <section className="border-t border-white/10 pt-8">
+              <h2 className="text-2xl font-extrabold text-white mb-6">Características</h2>
+              <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 text-gray-300 text-xs sm:text-sm">
+                {desarrollo.caracteristicas.map((item, idx) => (
+                  <li key={idx} className="flex items-center gap-2">
+                    <span className="w-1.5 h-1.5 rounded-full bg-brand-red flex-shrink-0" />
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </section>
+          )}
+
+          {desarrollo.sobreDesarrollo && (
+            <section className="border-t border-white/10 pt-8">
+              <h2 className="text-2xl font-extrabold text-white mb-4">Sobre el desarrollo</h2>
+              <p className="text-gray-300 leading-relaxed text-sm sm:text-base max-w-4xl">{desarrollo.sobreDesarrollo}</p>
+            </section>
+          )}
+
+          <ModelsSection modelos={desarrollo.modelos} />
+          <NearbySection lugares={desarrollo.lugaresCercanos} mapaUrl={desarrollo.mapaUrl} />
+        </div>
+
       </div>
     </main>
   );
