@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import { Loader2, CheckCircle2 } from 'lucide-react';
+import { sendToCRM } from '../../utils/sendToCRM';
 
 const ContactForm = () => {
   const [formData, setFormData] = useState({
@@ -7,11 +9,32 @@ const ContactForm = () => {
     whatsapp: '',
     mensaje: ''
   });
+  const [submitting, setSubmitting] = useState(false);
+  const [status, setStatus] = useState(null); // null | 'success' | 'error'
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Aquí puedes integrar la API de envío o cliente de email
-    console.log('Datos enviados:', formData);
+    setSubmitting(true);
+    setStatus(null);
+
+    const result = await sendToCRM({
+      nombre: formData.nombre,
+      correo: formData.email,
+      telefono: formData.whatsapp,
+      mensaje: formData.mensaje,
+      tipo: 'contacto-general',
+      origen: 'Bitáre Web · Formulario de Contacto',
+      timestamp: new Date().toISOString(),
+    });
+
+    setSubmitting(false);
+
+    if (result.success) {
+      setStatus('success');
+      setFormData({ nombre: '', email: '', whatsapp: '', mensaje: '' });
+    } else {
+      setStatus('error');
+    }
   };
 
   return (
@@ -75,11 +98,32 @@ const ContactForm = () => {
           />
         </div>
 
+        {status === 'success' && (
+          <div className="flex items-center gap-3 bg-green-500/10 border border-green-500/30 text-green-400 text-sm px-4 py-3 rounded-xl">
+            <CheckCircle2 size={18} />
+            <span>¡Gracias! Un asesor se pondrá en contacto contigo muy pronto.</span>
+          </div>
+        )}
+
+        {status === 'error' && (
+          <div className="bg-red-500/10 border border-red-500/30 text-red-400 text-sm px-4 py-3 rounded-xl">
+            No pudimos enviar tu mensaje. Intenta de nuevo o escríbenos por WhatsApp.
+          </div>
+        )}
+
         <button
           type="submit"
-          className="w-full bg-brand-red hover:bg-red-600 text-white font-bold py-4 rounded-xl transition-all shadow-[0_0_20px_rgba(220,38,38,0.3)] hover:shadow-[0_0_30px_rgba(220,38,38,0.5)] uppercase tracking-wider text-sm"
+          disabled={submitting}
+          className="w-full bg-brand-red hover:bg-red-600 text-white font-bold py-4 rounded-xl transition-all shadow-[0_0_20px_rgba(220,38,38,0.3)] hover:shadow-[0_0_30px_rgba(220,38,38,0.5)] uppercase tracking-wider text-sm disabled:opacity-50 flex items-center justify-center gap-2"
         >
-          Enviar
+          {submitting ? (
+            <>
+              <Loader2 className="animate-spin" size={18} />
+              Enviando...
+            </>
+          ) : (
+            'Enviar'
+          )}
         </button>
       </form>
 

@@ -28,38 +28,39 @@ const LeadFormModal = ({ isOpen, onClose, propiedad, whatsappNumber }) => {
 
   const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
 
-  const handleSubmit = async (e) => {
+    const handleSubmit = async (e) => {
     e.preventDefault();
     setSubmitting(true);
     setError('');
 
-    try {
-      // 1. Enviar al CRM
-      await sendToCRM({
-        ...form,
-        propiedad,
-        timestamp: new Date().toISOString(),
-        origen: 'Bitáre Web'
-      });
+    // 1. Enviar al CRM (no lanzamos error si falla, para no bloquear WhatsApp)
+    const result = await sendToCRM({
+      nombre: form.nombre,
+      telefono: form.telefono,
+      correo: form.correo,
+      propiedad,
+      tipo: 'lead-desarrollo',
+      origen: 'Bitáre Web · Detalle de Desarrollo',
+      timestamp: new Date().toISOString(),
+    });
 
-      // 2. Redirigir a WhatsApp con mensaje prellenado
-      const mensaje = encodeURIComponent(
-        `Hola, soy ${form.nombre}.\n` +
-        `Me interesa el desarrollo *${propiedad}*.\n\n` +
-        `Teléfono: ${form.telefono}\n` +
-        `Correo: ${form.correo}`
-      );
-      window.open(`https://wa.me/${whatsappNumber}?text=${mensaje}`, '_blank');
-
-      // 3. Limpiar y cerrar
-      setForm({ nombre: '', telefono: '', correo: '' });
-      onClose();
-    } catch (err) {
-      console.error(err);
-      setError('No pudimos enviar tu información. Intenta de nuevo o escríbenos por WhatsApp.');
-    } finally {
-      setSubmitting(false);
+    if (!result.success) {
+      console.warn('El lead no se guardó en el CRM, pero continuamos a WhatsApp.');
     }
+
+    // 2. Redirigir a WhatsApp con mensaje prellenado
+    const mensaje = encodeURIComponent(
+      `Hola, soy ${form.nombre}.\n` +
+      `Me interesa el desarrollo *${propiedad}*.\n\n` +
+      `Teléfono: ${form.telefono}\n` +
+      `Correo: ${form.correo}`
+    );
+    window.open(`https://wa.me/${whatsappNumber}?text=${mensaje}`, '_blank');
+
+    // 3. Limpiar y cerrar
+    setForm({ nombre: '', telefono: '', correo: '' });
+    setSubmitting(false);
+    onClose();
   };
 
   return (
