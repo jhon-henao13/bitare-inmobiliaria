@@ -8,6 +8,13 @@ import paramountImg from '../../assets/comercialProjects/paramount-providencia.p
 import xeloziaImg from '../../assets/comercialProjects/xelozia-cdgranja.png';
 import cassianovaImg from '../../assets/comercialProjects/cassianova-americana.png';
 
+// --- IMPORTACIONES DE LAS FOTOS DEL EQUIPO ---
+import angieImg from '../../assets/team/angie-cabada.jpeg';
+import cristianImg from '../../assets/team/cristian-chavez.jpeg';
+import luisMadrigalImg from '../../assets/team/luis-madrigal.jpeg';
+import luisaHuertaImg from '../../assets/team/luisa-huerta.jpeg';
+import danielImg from '../../assets/team/daniel-chavez.jpeg';
+
 // --- DATOS DE LOS PROYECTOS PROPORCIONADOS ---
 const deliveredProjects = [
   {
@@ -16,21 +23,18 @@ const deliveredProjects = [
     subtitle: 'Aportación de Tierra',
     img: viewpointImg
   },
-  
   {
     id: 2,
     title: 'Torre Meya | Ciudad del Sol',
     subtitle: ' ',
     img: torreMeyaImg
   },
-
   {
     id: 3,
     title: 'Nova | Providencia',
     subtitle: ' ',
     img: 'https://3dsvent.s3.us-east-1.amazonaws.com/bitare/INICIO/fotos+bitare-13+2.png'
   },
-
   {
     id: 4,
     title: 'Vivero Las Fuentes',
@@ -52,22 +56,21 @@ const commercialProjects = [
     subtitle: ' ',
     img: xeloziaImg
   },
-
   {
     id: 7,
     title: 'Cassianova | Americana',
     subtitle: ' ',
     img: cassianovaImg
   },
-  
 ];
 
-// --- DATOS DEL EQUIPO (Ejemplo con placeholders profesionales) ---
+// --- DATOS DEL EQUIPO ACTUALIZADOS ---
 const teamMembers = [
-  { id: 1, name: 'Carlos Mendoza', role: 'Director General', img: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=600&auto=format&fit=crop' },
-  { id: 2, name: 'Roberto Alarcón', role: 'Director Comercial', img: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=600&auto=format&fit=crop' },
-  { id: 3, name: 'David Silva', role: 'Director de Obra', img: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=600&auto=format&fit=crop' },
-  { id: 4, name: 'Fernando Ruiz', role: 'Finanzas', img: 'https://images.unsplash.com/photo-1556157382-97eda2d62296?q=80&w=600&auto=format&fit=crop' },
+  { id: 1, name: 'Cristian Chávez', role: 'Fundador / Director General', img: cristianImg },
+  { id: 2, name: 'Daniel Chávez', role: 'Socio Fundador', img: danielImg },
+  { id: 3, name: 'Luis Madrigal', role: 'Director Comercial', img: luisMadrigalImg },
+  { id: 4, name: 'Luisa Huerta', role: 'Gerente Comercial', img: luisaHuertaImg },
+  { id: 5, name: 'Angie Cabada', role: 'Gerente Comercial', img: angieImg },
 ];
 
 /* COMPONENTE INTERNO: Tarjeta de Proyecto Animada */
@@ -131,23 +134,12 @@ const ProjectCarouselCard = ({ categoryTitle, projects, intervalDelay }) => {
 };
 
 const TeamAndProjects = () => {
-  // Estado para el carrusel automático de equipo
-//   const [teamIndex, setTeamIndex] = useState(0);
-
-//   // Carrusel automático infinito de derecha a izquierda
-//   useEffect(() => {
-//     const teamTimer = setInterval(() => {
-//       setTeamIndex((prev) => (prev + 1) % teamMembers.length);
-//     }, 3000); // Velocidad de rotación (3 segundos)
-//     return () => clearInterval(teamTimer);
-//   }, []);
-
   return (
     <section 
       className="relative text-white py-28 px-4 md:px-12 lg:px-20 overflow-hidden font-sans"
       style={{ backgroundColor: '#2a2b2d' }}
     >
-      {/* Elementos geométricos / Cubos texturizados de fondo con sombras y brillos claros (#1b1c1e) */}
+      {/* Elementos geométricos / Cubos texturizados de fondo */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden z-0 opacity-70">
         <div className="absolute -top-24 -left-24 w-96 h-96 rounded-3xl transform rotate-12 shadow-[0_20px_50px_rgba(27,28,30,0.9)] border border-white/5" style={{ backgroundColor: '#1b1c1e' }} />
         <div className="absolute top-1/3 -right-20 w-[450px] h-[450px] rounded-2xl transform -rotate-12 shadow-[0_25px_60px_rgba(27,28,30,0.8)] border border-white/5" style={{ backgroundColor: '#1b1c1e' }} />
@@ -174,21 +166,21 @@ const TeamAndProjects = () => {
             </p>
           </div>
 
-
-          {/* Grilla estática del Equipo */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 py-6 items-center justify-items-center max-w-6xl mx-auto">
+          {/* Grilla adaptada para 5 miembros (Diseño elegante en 3 columnas superiores y 2 centradas abajo, o grid flexible) */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 py-6 items-center justify-items-center max-w-6xl mx-auto">
             {teamMembers.map((member, idx) => {
+              // Ajustamos la distribución visual para 5 tarjetas
               const isEven = idx % 2 === 0;
               return (
                 <div 
                   key={member.id} 
-                  className={`w-full transition-transform duration-500 ${
-                    isEven ? 'translate-y-0' : 'md:translate-y-8 lg:translate-y-12'
-                  }`}
+                  className={`w-full max-w-sm transition-transform duration-500 ${
+                    isEven ? 'translate-y-0' : 'lg:translate-y-6'
+                  } ${idx === 4 ? 'sm:col-span-2 lg:col-span-1 sm:max-w-md' : ''}`}
                 >
                   <Link 
                     to="/desarrollos" 
-                    className="relative group overflow-hidden block w-full h-[340px] cursor-pointer shadow-md border border-[#6e6d6e]/60"
+                    className="relative group overflow-hidden block w-full h-[570px] cursor-pointer shadow-md border border-[#6e6d6e]/60"
                   >
                     {/* Imagen del miembro (Gris por defecto, color en hover) */}
                     <img 
@@ -200,12 +192,12 @@ const TeamAndProjects = () => {
                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-50 group-hover:opacity-0 transition-opacity" />
 
                     {/* Minicard estilo premium animada (Aparece inferior izquierda) */}
-                    <div className="absolute bottom-4 left-4 bg-brand-black/95 p-3 flex items-center justify-between min-w-[180px] opacity-0 group-hover:opacity-100 transform translate-y-6 group-hover:translate-y-0 transition-all duration-500 shadow-2xl border-l-2 border-brand-red">
+                    <div className="absolute bottom-4 left-4 right-4 bg-brand-black/95 p-3.5 flex items-center justify-between opacity-0 group-hover:opacity-100 transform translate-y-6 group-hover:translate-y-0 transition-all duration-500 shadow-2xl border-l-2 border-brand-red">
                       <div>
                         <h4 className="text-white font-bold text-sm tracking-wide">{member.name}</h4>
                         <p className="text-gray-400 text-xs mt-0.5">{member.role}</p>
                       </div>
-                      <ArrowUpRight className="text-brand-red ml-3" size={18} />
+                      <ArrowUpRight className="text-brand-red ml-3 flex-shrink-0" size={18} />
                     </div>
                   </Link>
 
@@ -216,7 +208,6 @@ const TeamAndProjects = () => {
             })}
           </div>
         </motion.div>
-
 
         {/* =======================
             SECCIÓN 2: PROYECTOS
@@ -240,14 +231,14 @@ const TeamAndProjects = () => {
             <ProjectCarouselCard 
               categoryTitle="Desarrollos Entregados" 
               projects={deliveredProjects} 
-              intervalDelay={4000} // Cambia cada 4 segundos
+              intervalDelay={4000} 
             />
             
             {/* Carrusel Derecho - En Comercialización */}
             <ProjectCarouselCard 
               categoryTitle="Proyectos en Comercialización" 
               projects={commercialProjects} 
-              intervalDelay={4500} // Ligeramente desfasado para que no cambien al mismo milisegundo
+              intervalDelay={4500} 
             />
           </div>
         </motion.div>
