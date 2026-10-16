@@ -15,6 +15,9 @@ import luisMadrigalImg from '../../assets/team/luis-madrigal.jpeg';
 import luisaHuertaImg from '../../assets/team/luisa-huerta.jpeg';
 import danielImg from '../../assets/team/daniel-chavez.jpeg';
 
+import aliImg from '../../assets/team/ali-rueda.jpeg';
+import tabathaImg from '../../assets/team/tabatha-perez.jpeg';
+
 // --- DATOS DE LOS PROYECTOS PROPORCIONADOS ---
 const deliveredProjects = [
   {
@@ -71,6 +74,8 @@ const teamMembers = [
   { id: 3, name: 'Luis Madrigal', role: 'Director Comercial', img: luisMadrigalImg },
   { id: 4, name: 'Luisa Huerta', role: 'Gerente Comercial', img: luisaHuertaImg },
   { id: 5, name: 'Angie Cabada', role: 'Gerente Comercial', img: angieImg },
+  { id: 6, name: 'Ali Rueda', role: 'Asesora de Ventas', img: aliImg },
+  { id: 7, name: 'Tabatha Pérez', role: 'Asesora de Ventas', img: tabathaImg },
 ];
 
 /* COMPONENTE INTERNO: Tarjeta de Proyecto Animada */

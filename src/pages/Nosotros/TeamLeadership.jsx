@@ -7,6 +7,8 @@ import danielImg from '../../assets/team/daniel-chavez.jpeg';
 import luisMadrigalImg from '../../assets/team/luis-madrigal.jpeg';
 import luisaHuertaImg from '../../assets/team/luisa-huerta.jpeg';
 import angieImg from '../../assets/team/angie-cabada.jpeg';
+import aliImg from '../../assets/team/ali-rueda.jpeg';
+import tabathaImg from '../../assets/team/tabatha-perez.jpeg';
 
 const teamMembers = [
   {
@@ -49,6 +51,25 @@ const teamMembers = [
     bio: 'Experta en estrategias de comercialización y acompañamiento personalizado en cada etapa del proceso inmobiliario.',
     image: angieImg,
   },
+
+  {
+    id: 6,
+    name: 'Ali Rueda',
+    role: 'Asesora de Ventas',
+    quote: 'La confianza se construye escuchando y ofreciendo la mejor opción para cada estilo de vida.',
+    bio: 'Dedicada a brindar un asesoramiento inmobiliario cercano, transparente y altamente profesional en cada etapa de la inversión.',
+    image: aliImg,
+  },
+  {
+    id: 7,
+    name: 'Tabatha Pérez',
+    role: 'Asesora de Ventas',
+    quote: 'Guiar a nuestros clientes hacia el patrimonio ideal es una responsabilidad que asumimos con total compromiso.',
+    bio: 'Especializada en la atención personalizada a inversionistas y familias que buscan propiedades exclusivas en preventa.',
+    image: tabathaImg,
+  },
+
+
 ];
 
 const TeamLeadership = () => {
