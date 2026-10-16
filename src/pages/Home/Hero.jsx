@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import bgHero from '../../assets/background-hero.png';
 import bgHeroMobile from '../../assets/background-hero-mobile.png';
 
@@ -46,13 +47,19 @@ const Hero = () => {
             Arquitectura que trasciende
           </h1>
           
-          <motion.button
+          <motion.div
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="bg-brand-red text-white font-extrabold py-3 px-6 rounded flex items-center gap-2 hover:bg-red-700 transition-colors shadow-lg order-3 w-fit mt-2"
+            className="order-3 w-fit mt-2"
           >
-            Ver Portafolio <ArrowRight size={18} strokeWidth={2.5} />
-          </motion.button>
+            <Link
+              to="/desarrollos"
+              className="bg-brand-red text-white font-extrabold py-3 px-6 rounded flex items-center gap-2 hover:bg-red-700 transition-colors shadow-lg"
+            >
+              Ver Portafolio <ArrowRight size={18} strokeWidth={2.5} />
+            </Link>
+          </motion.div>
+          
         </motion.div>
       </div>
     </section>
