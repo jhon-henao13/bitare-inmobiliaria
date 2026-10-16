@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 const WhatsAppButton = () => {
   return (
     <motion.a
-      href="https://wa.me/5213310433598" // Reemplazar con el número real
+      href="https://wa.me/5213310433598?text=Hola,%20busco%20opciones%20de%20preventa%20e%20inversi%C3%B3n%20inmobiliaria.%20%C2%BFMe%20podr%C3%ADan%20compartir%20el%20cat%C3%A1logo%20actual?"
       target="_blank"
       rel="noopener noreferrer"
       className="fixed bottom-8 right-8 z-50 flex items-center justify-center w-14 h-14 bg-green-500 rounded-full border-[3px] border-white shadow-2xl cursor-pointer hover:bg-green-600 transition-colors"

@@ -46,7 +46,7 @@ const OfficeInfoMap = () => {
             Teléfono
           </div>
           <p className="text-white text-sm font-normal">
-            +52 33 0000 0000
+            +52 33 1043 3598
           </p>
         </div>
 

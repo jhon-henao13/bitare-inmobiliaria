@@ -78,7 +78,7 @@ const ContactForm = () => {
             <input
               type="tel"
               required
-              placeholder="+52 33 0000 0000"
+              placeholder="+52 33 1043 3598"
               value={formData.whatsapp}
               onChange={(e) => setFormData({ ...formData, whatsapp: e.target.value })}
               className="w-full bg-[#121315] border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-600 focus:outline-none focus:border-brand-red transition-colors text-sm"
@@ -131,7 +131,7 @@ const ContactForm = () => {
       <div className="pt-4 border-t border-white/10 text-center">
         <p className="text-xs text-gray-400 mb-3">¿Prefieres atención inmediata?</p>
         <a
-          href="https://wa.me/523300000000?text=Hola,%20quisiera%20recibir%20información%20sobre%20sus%20proyectos."
+          href="https://wa.me/5213310433598?text=Hola,%20busco%20opciones%20de%20preventa%20e%20inversi%C3%B3n%20inmobiliaria.%20%C2%BFMe%20podr%C3%ADan%20compartir%20el%20cat%C3%A1logo%20actual?"
           target="_blank"
           rel="noopener noreferrer"
           className="inline-flex items-center justify-center gap-2 w-full bg-[#25D366]/10 hover:bg-[#25D366]/20 text-[#25D366] border border-[#25D366]/30 font-bold py-3 px-6 rounded-xl transition-all text-sm"
