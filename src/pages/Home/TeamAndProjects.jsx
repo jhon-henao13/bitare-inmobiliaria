@@ -179,7 +179,7 @@ const TeamAndProjects = () => {
                   } ${idx === 4 ? 'sm:col-span-2 lg:col-span-1 sm:max-w-md' : ''}`}
                 >
                   <Link 
-                    to="/desarrollos" 
+                    to="/nosotros" 
                     className="relative group overflow-hidden block w-full h-[570px] cursor-pointer shadow-md border border-[#6e6d6e]/60"
                   >
                     {/* Imagen del miembro (Gris por defecto, color en hover) */}

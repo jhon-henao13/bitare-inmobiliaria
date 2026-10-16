@@ -22,8 +22,8 @@ const HeroDesarrollos = () => {
           className="max-w-3xl"
         >
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white tracking-tight !leading-[1.15]">
-            Portafolio de Desarrollos <br />
-            <span className="text-brand-red">Bitáre.</span>
+            Bitáre <br />
+            <span className="text-brand-red">Developments.</span>
           </h1>
           
           <motion.p 
@@ -32,7 +32,7 @@ const HeroDesarrollos = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="mt-6 text-gray-300 text-base md:text-lg font-normal leading-relaxed max-w-xl"
           >
-            Explora nuestros proyectos residenciales y comerciales diseñados bajo los más altos estándares de arquitectura, plusvalía y ubicación estratégica.
+            Desarrollamos con visión. Comercializamos con estrategia. Creamos valor a largo plazo.
           </motion.p>
         </motion.div>
       </div>

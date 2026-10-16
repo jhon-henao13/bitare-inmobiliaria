@@ -35,7 +35,7 @@ const OfficeInfoMap = () => {
           </div>
           <p className="text-white text-sm font-normal">
             Lun - Vie: 9:00 a 18:00 hrs.<br />
-            Sábados: 9:00 a 14:00 hrs.
+            {/* Sábados: 9:00 a 14:00 hrs. */}
           </p>
         </div>
 
@@ -57,7 +57,7 @@ const OfficeInfoMap = () => {
             E-mail
           </div>
           <p className="text-white text-sm font-normal">
-            contacto@bitare.mx
+            admonbitare@gmail.com
           </p>
         </div>
       </div>
