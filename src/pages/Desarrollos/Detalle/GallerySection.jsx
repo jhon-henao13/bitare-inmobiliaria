@@ -81,7 +81,7 @@ const GallerySection = ({ data }) => {
       <div className="flex flex-wrap items-center gap-6 bg-[#1b1c1e] border border-white/10 p-4 rounded-xl text-xs sm:text-sm text-gray-300">
         <div className="flex items-center gap-2">
           <Car className="w-5 h-5 text-brand-red" />
-          <span>{data.parking || 'Estacionamiento por definir'}</span>
+          <span>{data.estacionamientosPorHabitacion || 'Estacionamientos por definir'}</span>
         </div>
         <div className="h-4 w-[1px] bg-white/20" />
         <div className="flex items-center gap-2">

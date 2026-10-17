@@ -47,7 +47,7 @@ export const useDesarrollo = (slug) => {
       fechaApertura,
       rangoSuperficie,
       precioDesde,
-      banosPorHabitacion,
+      estacionamientosPorHabitacion,
       tipologias,
       amenidades,
       resumen,

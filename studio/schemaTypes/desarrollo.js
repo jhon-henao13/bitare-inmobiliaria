@@ -95,8 +95,8 @@ export default {
 
     // ----- DETALLE -----
     {
-      name: 'banosPorHabitacion',
-      title: 'Baños por Habitación',
+      name: 'estacionamientosPorHabitacion',
+      title: 'Estacionamientos por Habitación',
       type: 'string',
       group: 'detalle',
       description: 'Ej. "1 por habitación". Aparece en la barra rápida de especificaciones.'
