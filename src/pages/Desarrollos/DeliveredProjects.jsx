@@ -32,7 +32,7 @@ const deliveredProjects = [
   },
   {
     id: 5,
-    title: 'ID5', // Puedes ajustar el nombre exacto si difiere
+    title: 'Los Robles', // Puedes ajustar el nombre exacto si difiere
     category: 'Aportación de Tierra',
     image: id5Img,
   },
