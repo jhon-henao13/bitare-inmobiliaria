@@ -43,11 +43,7 @@ const Footer = () => {
                 Desarrollos
               </Link>
             </li>
-            <li>
-              <Link to="/desarrollos" className="hover:text-black transition-colors duration-200">
-                Propiedades
-              </Link>
-            </li>
+            
             <li>
               <Link to="/nosotros" className="hover:text-black transition-colors duration-200">
                 Nosotros
@@ -64,7 +60,7 @@ const Footer = () => {
           <div className="flex items-center gap-3">
             {/* Instagram SVG nativo */}
             <a 
-              href="https://instagram.com" 
+              href="https://www.instagram.com/bitarerealestate/"
               target="_blank" 
               rel="noopener noreferrer" 
               aria-label="Instagram"
@@ -89,7 +85,7 @@ const Footer = () => {
 
             {/* Facebook SVG nativo */}
             <a 
-              href="https://facebook.com" 
+              href="https://www.facebook.com/profile.php?id=61559502192781&locale=es_LA#"
               target="_blank" 
               rel="noopener noreferrer" 
               aria-label="Facebook"
