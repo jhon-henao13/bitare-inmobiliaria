@@ -15,7 +15,7 @@ const teamMembers = [
     id: 1,
     name: 'Cristian Chávez',
     role: 'Fundador / Director General',
-    quote: 'Construir el futuro de la arquitectura inmobiliaria requiere una visión inquebrantable y un compromiso absoluto con la excelencia.',
+    quote: 'Desarrollamos con visión. Comercializamos con estrategia. Creamos valor a largo plazo.',
     bio: 'Lidera la estrategia global y la expansión corporativa de Bitáre, transformando cada desarrollo en un referente de valor y diseño.',
     image: cristianImg,
   },
