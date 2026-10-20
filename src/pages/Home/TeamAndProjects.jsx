@@ -13,7 +13,7 @@ import angieImg from '../../assets/team/angie-cabada.jpeg';
 import cristianImg from '../../assets/team/cristian-chavez.jpeg';
 import luisMadrigalImg from '../../assets/team/luis-madrigal.jpeg';
 import luisaHuertaImg from '../../assets/team/luisa-huerta.jpeg';
-import danielImg from '../../assets/team/daniel-chavez.jpeg';
+import danielImg from '../../assets/team/daniel-chavez2.jpeg';
 
 import aliImg from '../../assets/team/ali-rueda.jpeg';
 import tabathaImg from '../../assets/team/tabatha-perez.jpeg';
@@ -70,12 +70,12 @@ const commercialProjects = [
 // --- DATOS DEL EQUIPO ACTUALIZADOS ---
 const teamMembers = [
   { id: 1, name: 'Cristian Chávez', role: 'Fundador / Director General', img: cristianImg },
-  { id: 2, name: 'Daniel Chávez', role: 'Socio Fundador', img: danielImg },
+  { id: 2, name: 'Daniel Chávez', role: 'Asesor de ventas', img: danielImg },
   { id: 3, name: 'Luis Madrigal', role: 'Director Comercial', img: luisMadrigalImg },
-  { id: 4, name: 'Luisa Huerta', role: 'Gerente Comercial', img: luisaHuertaImg },
-  { id: 5, name: 'Angie Cabada', role: 'Gerente Comercial', img: angieImg },
+  { id: 4, name: 'Luisa Huerta', role: 'Asesora', img: luisaHuertaImg },
+  { id: 5, name: 'Angie Cabada', role: 'Asesora', img: angieImg },
   { id: 6, name: 'Ali Rueda', role: 'Asesora de Ventas', img: aliImg },
-  { id: 7, name: 'Tabatha Pérez', role: 'Asesora de Ventas', img: tabathaImg },
+  // { id: 7, name: 'Tabatha Pérez', role: 'Asesora de Ventas', img: tabathaImg },
 ];
 
 /* COMPONENTE INTERNO: Tarjeta de Proyecto Animada */
