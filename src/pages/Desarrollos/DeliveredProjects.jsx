@@ -4,35 +4,35 @@ import viewpointImg from '../../assets/deliveredProjects/viewpoint.png';
 import id3Img from '../../assets/deliveredProjects/id3.png';
 import id5Img from '../../assets/deliveredProjects/id5.png';
 
-// Lista de proyectos entregados y aportaciones según la imagen de referencia
+// Lista de proyectos entregados con sus títulos correctos
 const deliveredProjects = [
   {
     id: 1,
-    title: ' ',
+    title: 'Torre Meya | Ciudad del Sol',
     category: 'Proyecto Entregado',
     image: torreMeyaImg,
   },
   {
     id: 2,
-    title: ' ',
+    title: 'View Point | Ladrón de G.',
     category: 'Aportación de Tierra',
     image: viewpointImg,
   },
   {
     id: 3,
-    title: ' ',
+    title: 'Nova Providencia',
     category: 'Proyecto Entregado',
     image: id3Img,
   },
   {
     id: 4,
-    title: ' ',
+    title: 'Vivero Las Fuentes', // Puedes ajustar el nombre exacto si difiere
     category: 'Aportación de Tierra',
     image: 'https://3dsvent.s3.us-east-1.amazonaws.com/bitare/INICIO/fotos+bitare-11+1-1.png',
   },
   {
     id: 5,
-    title: ' ',
+    title: 'Los Robles', // Puedes ajustar el nombre exacto si difiere
     category: 'Aportación de Tierra',
     image: id5Img,
   },
@@ -89,34 +89,31 @@ const DeliveredProjects = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
-              className="group relative bg-[#1b1c1e] border border-white/10 hover:border-brand-red/50 transition-all duration-500 overflow-hidden shadow-2xl rounded-xs"
+              className="group relative bg-[#1b1c1e] border border-white/10 hover:border-brand-red/50 transition-all duration-500 overflow-hidden shadow-2xl rounded-xs flex flex-col"
             >
-              {/* Contenedor de la Imagen con aspect ratio vertical uniforme (3:4) */}
-              <div className="relative w-full overflow-hidden bg-[#161616] aspect-[3/4]">
+              {/* Contenedor adaptativo de la Imagen (sin recortes forzados) */}
+              <div className="relative w-full bg-[#161616] flex items-center justify-center overflow-hidden p-4">
                 <img
                   src={project.image}
                   alt={project.title}
-                  className="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105"
+                  className="w-full h-auto max-h-[450px] object-contain transition-transform duration-700 ease-out group-hover:scale-105"
                 />
 
-                {/* Sombra de degradado para legibilidad */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-70 group-hover:opacity-90 transition-opacity duration-300 pointer-events-none" />
-
-                {/* Título */}
-                <div className="absolute bottom-4 left-4 right-20 z-10">
-                  <h3 className="text-white font-bold text-lg md:text-xl tracking-wide drop-shadow-md">
-                    {project.title}
-                  </h3>
-                </div>
-
-                {/* Badge */}
+                {/* Badge flotante en la esquina superior derecha */}
                 {project.category && (
-                  <div className="absolute bottom-4 right-4 z-10">
+                  <div className="absolute top-4 right-4 z-10">
                     <span className="bg-black/70 backdrop-blur-md text-white text-[10px] md:text-xs font-medium px-3 py-1.5 rounded-xs border border-white/20 tracking-wider shadow-lg">
                       {project.category}
                     </span>
                   </div>
                 )}
+              </div>
+
+              {/* Barra inferior de información con el Título del proyecto */}
+              <div className="p-5 bg-[#1b1c1e] border-t border-white/5 flex items-center justify-between mt-auto">
+                <h3 className="text-white font-bold text-lg md:text-xl tracking-wide">
+                  {project.title}
+                </h3>
               </div>
             </motion.div>
           ))}
