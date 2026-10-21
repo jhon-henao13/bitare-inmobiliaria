@@ -22,7 +22,7 @@ const teamMembers = [
   {
     id: 2,
     name: 'Daniel Chávez',
-    role: 'Socio Fundador',
+    role: 'Asesor de Ventas',
     quote: 'La certidumbre y la solidez financiera son los cimientos sobre los cuales edificamos legados duraderos.',
     bio: 'Encargado de la estructuración estratégica y consolidación de alianzas clave para el crecimiento financiero de los proyectos.',
     image: danielImg,
@@ -38,7 +38,7 @@ const teamMembers = [
   {
     id: 4,
     name: 'Luisa Huerta',
-    role: 'Gerente Comercial',
+    role: 'Asesora de Ventas',
     quote: 'Cada cliente busca algo único; nuestra misión es convertir esa visión en una realidad tangible con atención de primer nivel.',
     bio: 'Enfocada en la optimización de la experiencia del cliente y la gestión de relaciones comerciales de alto valor.',
     image: luisaHuertaImg,
@@ -46,7 +46,7 @@ const teamMembers = [
   {
     id: 5,
     name: 'Angie Cabada',
-    role: 'Gerente Comercial',
+    role: 'Asesora de Ventas',
     quote: 'La pasión por el detalle y la cercanía con nuestros clientes aseguran transacciones exitosas y relaciones a largo plazo.',
     bio: 'Experta en estrategias de comercialización y acompañamiento personalizado en cada etapa del proceso inmobiliario.',
     image: angieImg,
