@@ -1,11 +1,20 @@
 import { useState, useEffect } from 'react';
 import { X, Loader2 } from 'lucide-react';
 import { sendToCRM } from '../utils/sendToCRM';
+import { useDesarrollos } from '../hooks/useDesarrollos';
 
 const LeadFormModal = ({ isOpen, onClose, propiedad, whatsappNumber }) => {
-  const [form, setForm] = useState({ nombre: '', telefono: '', correo: '' });
+  const { desarrollos } = useDesarrollos(); // Obtenemos todos los desarrollos
+  const [form, setForm] = useState({ nombre: '', telefono: '', correo: '', propiedad: '' });
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState('');
+
+  // Si hay desarrollos, seleccionamos el primero por defecto
+  useEffect(() => {
+    if (isOpen && desarrollos.length > 0 && !form.propiedad) {
+      setForm(prev => ({ ...prev, propiedad: propiedad || desarrollos[0].nombre }));
+    }
+  }, [isOpen, desarrollos, propiedad, form.propiedad]);
 
   // Bloquear scroll del body cuando está abierto
   useEffect(() => {
@@ -28,19 +37,21 @@ const LeadFormModal = ({ isOpen, onClose, propiedad, whatsappNumber }) => {
 
   const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
 
-    const handleSubmit = async (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setSubmitting(true);
     setError('');
 
-    // 1. Enviar al CRM (no lanzamos error si falla, para no bloquear WhatsApp)
+    const propiedadSeleccionada = propiedad || form.propiedad;
+
+    // 1. Enviar al CRM (usando el mismo webhook de desarrollo)
     const result = await sendToCRM({
       nombre: form.nombre,
       telefono: form.telefono,
       correo: form.correo,
-      propiedad,
-      tipo: 'lead-desarrollo',
-      origen: 'Bitáre Web · Detalle de Desarrollo',
+      propiedad: propiedadSeleccionada,
+      tipo: 'lead-desarrollo', // Mantenemos el mismo tipo para que llegue al webhook de desarrollo
+      origen: propiedad ? 'Bitáre Web · Detalle de Desarrollo' : 'Bitáre Web · Botón Flotante',
       timestamp: new Date().toISOString(),
     });
 
@@ -51,14 +62,14 @@ const LeadFormModal = ({ isOpen, onClose, propiedad, whatsappNumber }) => {
     // 2. Redirigir a WhatsApp con mensaje prellenado
     const mensaje = encodeURIComponent(
       `Hola, soy ${form.nombre}.\n` +
-      `Me interesa el desarrollo *${propiedad}*.\n\n` +
+      `Me interesa el desarrollo *${propiedadSeleccionada}*.\n\n` +
       `Teléfono: ${form.telefono}\n` +
       `Correo: ${form.correo}`
     );
     window.open(`https://wa.me/${whatsappNumber}?text=${mensaje}`, '_blank');
 
     // 3. Limpiar y cerrar
-    setForm({ nombre: '', telefono: '', correo: '' });
+    setForm({ nombre: '', telefono: '', correo: '', propiedad: '' });
     setSubmitting(false);
     onClose();
   };
@@ -108,13 +119,34 @@ const LeadFormModal = ({ isOpen, onClose, propiedad, whatsappNumber }) => {
             />
           </div>
 
-          <div>
-            <label className="block text-xs font-bold uppercase tracking-wider text-gray-400 mb-2">Propiedad de Interés</label>
-            <input
-              type="text" value={propiedad} readOnly
-              className="w-full bg-black/60 border border-white/5 rounded-lg px-4 py-3 text-gray-400 cursor-not-allowed"
-            />
-          </div>
+          {/* Selector de Propiedad (si no viene prellenada) */}
+          {!propiedad ? (
+            <div>
+              <label className="block text-xs font-bold uppercase tracking-wider text-gray-400 mb-2">Propiedad de Interés</label>
+              <select
+                name="propiedad"
+                value={form.propiedad}
+                onChange={handleChange}
+                required
+                className="w-full bg-black/40 border border-white/10 rounded-lg px-4 py-3 text-white focus:border-brand-red focus:outline-none transition-colors appearance-none"
+              >
+                <option value="" disabled>Selecciona un desarrollo</option>
+                {desarrollos.map((dev) => (
+                  <option key={dev._id} value={dev.nombre}>
+                    {dev.nombre}
+                  </option>
+                ))}
+              </select>
+            </div>
+          ) : (
+            <div>
+              <label className="block text-xs font-bold uppercase tracking-wider text-gray-400 mb-2">Propiedad de Interés</label>
+              <input
+                type="text" value={propiedad} readOnly
+                className="w-full bg-black/60 border border-white/5 rounded-lg px-4 py-3 text-gray-400 cursor-not-allowed"
+              />
+            </div>
+          )}
 
           {error && <p className="text-red-500 text-sm">{error}</p>}
 

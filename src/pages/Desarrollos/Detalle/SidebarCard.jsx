@@ -8,8 +8,7 @@ const SidebarCard = ({ data }) => {
     ? data.amenidades.join(', ')
     : 'Amenidades exclusivas por anunciar';
 
-  // ⚠️ Cambia por el WhatsApp real de Bitáre
-  const WHATSAPP_NUMBER = '521234567890';
+  const WHATSAPP_NUMBER = '5213310433598';
 
   return (
     <>
