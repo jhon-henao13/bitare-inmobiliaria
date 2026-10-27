@@ -72,8 +72,8 @@ const teamMembers = [
   { id: 1, name: 'Cristian Chávez', role: 'Fundador / Director General', img: cristianImg },
   { id: 2, name: 'Daniel Chávez', role: 'Asesor de ventas', img: danielImg },
   { id: 3, name: 'Luis Madrigal', role: 'Director Comercial', img: luisMadrigalImg },
-  { id: 4, name: 'Luisa Huerta', role: 'Asesora', img: luisaHuertaImg },
-  { id: 5, name: 'Angie Cabada', role: 'Asesora', img: angieImg },
+  { id: 4, name: 'Luisa Huerta', role: 'Asesora de Ventas', img: luisaHuertaImg },
+  { id: 5, name: 'Angie Cabada', role: 'Asesora de Ventas', img: angieImg },
   { id: 6, name: 'Ali Rueda', role: 'Asesora de Ventas', img: aliImg },
   // { id: 7, name: 'Tabatha Pérez', role: 'Asesora de Ventas', img: tabathaImg },
 ];
