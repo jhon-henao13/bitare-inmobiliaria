@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { X, Loader2 } from 'lucide-react';
+import { X, Loader2, ChevronDown } from 'lucide-react';
 import { sendToCRM } from '../utils/sendToCRM';
 import { useDesarrollos } from '../hooks/useDesarrollos';
 
@@ -123,20 +123,26 @@ const LeadFormModal = ({ isOpen, onClose, propiedad, whatsappNumber }) => {
           {!propiedad ? (
             <div>
               <label className="block text-xs font-bold uppercase tracking-wider text-gray-400 mb-2">Propiedad de Interés</label>
-              <select
-                name="propiedad"
-                value={form.propiedad}
-                onChange={handleChange}
-                required
-                className="w-full bg-black/40 border border-white/10 rounded-lg px-4 py-3 text-white focus:border-brand-red focus:outline-none transition-colors appearance-none"
-              >
-                <option value="" disabled>Selecciona un desarrollo</option>
-                {desarrollos.map((dev) => (
-                  <option key={dev._id} value={dev.nombre}>
-                    {dev.nombre}
-                  </option>
-                ))}
-              </select>
+              <div className="relative">
+                <select
+                  name="propiedad"
+                  value={form.propiedad}
+                  onChange={handleChange}
+                  required
+                  className="w-full bg-black/40 border border-white/10 rounded-lg px-4 py-3 pr-10 text-white focus:border-brand-red focus:outline-none transition-colors appearance-none cursor-pointer"
+                >
+                  <option value="" disabled>Selecciona un desarrollo</option>
+                  {desarrollos.map((dev) => (
+                    <option key={dev._id} value={dev.nombre} className="bg-[#1b1c1e] text-white">
+                      {dev.nombre}
+                    </option>
+                  ))}
+                </select>
+                {/* Flechita moderna premium alineada verticalmente */}
+                <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none text-gray-400">
+                  <ChevronDown size={18} />
+                </div>
+              </div>
             </div>
           ) : (
             <div>

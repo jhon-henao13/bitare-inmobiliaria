@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import alianzaImg from '../../assets/nosotros-alianza.jpg';
+import alianzaImg from '../../assets/nosotros-alianza.png';
 
 const alliances = [
   {

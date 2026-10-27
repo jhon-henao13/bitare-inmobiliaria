@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 
 const workModels = [
   {
@@ -130,12 +131,15 @@ const HowWeWork = () => {
 
                 {/* Descripción explicativa exacta */}
                 <p className="text-gray-400 text-xs sm:text-sm leading-relaxed font-normal">
-                  {item.description}[cite: 14]
+                  {item.description}
                 </p>
               </div>
 
-              {/* Pie interactivo de tarjeta */}
-              <div className="mt-8 pt-6 border-t border-white/10 flex items-center justify-between group-hover:border-white/20 transition-colors">
+              {/* Pie interactivo de tarjeta convertido en Link */}
+              <Link 
+                to="/desarrollos" 
+                className="mt-8 pt-6 border-t border-white/10 flex items-center justify-between group-hover:border-white/20 transition-colors"
+              >
                 <span className="text-xs text-gray-400 font-medium group-hover:text-white transition-colors">
                   Explorar esquema
                 </span>
@@ -144,7 +148,7 @@ const HowWeWork = () => {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
                   </svg>
                 </div>
-              </div>
+              </Link>
             </motion.div>
           ))}
         </div>
@@ -168,12 +172,12 @@ const HowWeWork = () => {
             </p>
           </div>
 
-          <a
-            href="#contacto"
-            className="whitespace-nowrap px-6 py-3 rounded-xl bg-brand-red hover:bg-red-700 text-white font-bold text-sm tracking-wide transition-all shadow-lg hover:shadow-brand-red/30"
+          <Link
+            to="/contacto"
+            className="whitespace-nowrap px-6 py-3 rounded-xl bg-brand-red hover:bg-red-700 text-white font-bold text-sm tracking-wide transition-all shadow-lg hover:shadow-brand-red/30 text-center"
           >
             Iniciar conversación
-          </a>
+          </Link>
         </motion.div>
 
       </div>

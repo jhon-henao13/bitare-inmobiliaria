@@ -128,7 +128,7 @@ const ContactForm = () => {
       </form>
 
       {/* Separador y Botón de WhatsApp */}
-      <div className="pt-4 border-t border-white/10 text-center">
+      {/* <div className="pt-4 border-t border-white/10 text-center">
         <p className="text-xs text-gray-400 mb-3">¿Prefieres atención inmediata?</p>
         <a
           href="https://wa.me/5213310433598?text=Hola,%20busco%20opciones%20de%20preventa%20e%20inversi%C3%B3n%20inmobiliaria.%20%C2%BFMe%20podr%C3%ADan%20compartir%20el%20cat%C3%A1logo%20actual?"
@@ -141,7 +141,9 @@ const ContactForm = () => {
           </svg>
           Chatea en WhatsApp
         </a>
-      </div>
+      </div> */}
+
+
     </div>
   );
 };
