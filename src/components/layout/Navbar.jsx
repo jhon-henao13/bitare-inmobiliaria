@@ -67,7 +67,7 @@ const Navbar = () => {
               {/* Línea inferior animada muy elegante al hacer hover */}
               <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-[#d12a2a] transition-all duration-300 group-hover:w-full" />
             </Link>
-          ))} unabhängig
+          ))}
         </div>
 
         {/* Botón Hamburger / Toggle Móvil */}
