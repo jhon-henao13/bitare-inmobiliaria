@@ -137,7 +137,7 @@ const HowWeWork = () => {
 
               {/* Pie interactivo de tarjeta convertido en Link */}
               <Link 
-                to="/desarrollos" 
+                to="/contacto" 
                 className="mt-8 pt-6 border-t border-white/10 flex items-center justify-between group-hover:border-white/20 transition-colors"
               >
                 <span className="text-xs text-gray-400 font-medium group-hover:text-white transition-colors">
