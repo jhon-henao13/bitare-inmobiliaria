@@ -333,7 +333,7 @@ const TeamLeadership = () => {
         {/* ========================================================
             SECCIÓN ESTELAR: FOTO GRUPAL (FULL TEAM 16:9)
         ======================================================== */}
-        <motion.div
+        {/* <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -363,7 +363,7 @@ const TeamLeadership = () => {
               </p>
             </div>
           </div>
-        </motion.div>
+        </motion.div> */}
 
       </div>
     </section>
